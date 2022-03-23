@@ -1,0 +1,105 @@
+#include<stdio.h>
+
+float posicion (float tiempo);
+
+int main ()
+{
+    //Pregunta 1.
+    char intro;
+    int p1;
+    printf("Acabas de entrar en la prueba de fisica, se te haran varias pruebas y deberas superar todas para conseguir una de las llaves para salir de la prision\n");
+    printf("Pulse intro para continuar\n");
+    scanf("%c", &intro);
+    do
+    {
+        printf("La primera pregunta: ¿Que pesa mas un kilo de paja o un kilo de acero?\n");
+        printf("Las soluciones son:\n 1)Pesa mas un kilo de paja\n 2)Pesa mas un kilo de acero\n 3)Ninguna de las anteriores son correctas\n");
+        printf("Solucion 1, 2 o 3\n");
+        scanf("%d", &p1);
+        switch (p1)
+        {
+        case 1:
+            {
+                printf("Tu respuesta ha sido guardada\n");
+            }
+        break;
+        case 2:
+            {
+                printf("Tu respuesta ha sido guardada\n");
+            }
+        break;
+        case 3:
+            {
+                printf("Tu respuesta ha sido guardada\n");
+            }
+        break;
+        default:
+            {
+                p1=p1;
+            }
+        break;
+        }
+    }
+    while((p1<1) || (p1>3));
+    if (p1 == 3)
+    {
+        printf("Has conseguido una de llaves\n");
+    }
+    else
+    {
+        printf("Has fallado\n");
+    }
+    printf("\n");
+
+    //Pregunta 2
+    float p2, sol, tiempo;
+    printf("Segunda pregunta: ¿Donde estara un tren que sale desde Madrid hasta Santander con una velocidad inicial de 30 metros/segundos, una aceleracion de 3 metros por segundo si el tiempo transcurrido son 2 horas?\n");
+    printf("La solucion en metros por segundo.\n");
+    scanf("%f", &p2);
+    sol = posicion (tiempo);
+    if (sol == p2)
+    {
+        printf("Has conseguido una de llaves\n");
+    }
+    else
+    {
+        printf("Has fallado\n");
+    }
+    printf("\n");
+
+    //Pregunta 3.
+    char letra;
+    printf("Tenemos este acertijo: 'Cuanto más gorda está mayor es el amor.'\n");
+    printf("Esto significa:\n A)Los protones siempre se acercan a los neutrones.\n B)A mayor volumen, mayor capacidad.\n C)Cuanto más peso, mayor fuerza de atraccion.\n");
+    scanf(" %c", &letra);
+    if ((letra == 67) || (letra == 99))
+    {
+        printf("Has conseguido una de llaves\n");
+    }
+    else
+    {
+         printf("Has fallado\n");
+    }
+    printf("\n");
+
+    //Recuento
+    if((p1 == 3) && (sol == p2) && (letra == 67) || (letra == 99))
+    {
+        printf("Felicidades has pasado la prueba\n");
+    }
+    else
+    {
+        printf("Lo siento, seguiras en este infierno un year mas\n");
+    }
+    printf("\n");
+    return 0;
+}
+
+float posicion (float tiempo)
+{
+    float posicion;
+    int vo=30, a=3;
+    tiempo=2*60*60;
+    posicion=vo*tiempo+0.5*a*tiempo*tiempo;
+    return posicion;
+}
