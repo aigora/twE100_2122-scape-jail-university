@@ -1,6 +1,6 @@
 #include<stdio.h>
 
-float posicion (float tiempo);
+float posicion (float tiempo1, float tiempo2);
 
 int main ()
 {
@@ -52,11 +52,11 @@ int main ()
     printf("\n");
 
     //Pregunta 2
-    float p2, sol, tiempo;
-    printf("Segunda pregunta: ¿Donde estara un tren que sale desde Madrid hasta Santander con una velocidad inicial de 30 metros/segundos, una aceleracion de 3 metros por segundo si el tiempo transcurrido son 2 horas?\n");
-    printf("La solucion en metros por segundo.\n");
+    float p2, sol, tiempo1, tiempo2;
+    printf("Segunda pregunta: ¿Donde estara un tren que sale desde Madrid hasta Santander con una velocidad inicial de 30 metros/segundos, una aceleracion de 0.05 metros por segundo durante media hora, si el tiempo transcurrido son 2 horas?\n");
+    printf("La solucion en kilometros.\n");
     scanf("%f", &p2);
-    sol = posicion (tiempo);
+    sol = posicion (tiempo1, tiempo2);
     if (sol == p2)
     {
         printf("Has conseguido una de llaves\n");
@@ -83,7 +83,7 @@ int main ()
     printf("\n");
 
     //Recuento
-    if((p1 == 3) && (sol == p2) && (letra == 67) || (letra == 99))
+    if((p1 == 3) && (sol == p2) && ((letra == 67) || (letra == 99)))
     {
         printf("Felicidades has pasado la prueba\n");
     }
@@ -95,11 +95,14 @@ int main ()
     return 0;
 }
 
-float posicion (float tiempo)
+float posicion (float tiempo1, float tiempo2)
 {
     float posicion;
-    int vo=30, a=3;
-    tiempo=2*60*60;
-    posicion=vo*tiempo+0.5*a*tiempo*tiempo;
+    float vo=25, a=0.05;
+    float posicion1;
+    tiempo1=2*60*60;
+    tiempo2=30*60;
+    posicion1=vo*tiempo1+0.5*a*tiempo2*tiempo2;
+    posicion = posicion1/1000;
     return posicion;
 }
