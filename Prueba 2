@@ -5,22 +5,64 @@ void zeros(int sudoku[9][9], int fila, int columna);
 
 int main()
 {
+    //Estructura
     int x[8];
     int y[8];
+    
+    //Entrada
     printf("Bienvenido a la prueba de matematicas, en esta prueba deberas resolver un sudoku.\n");
-    printf("Para ello deberas introducir primero el valor de la celdilla, donde quieras poner el valor.\n");
-    printf("Siendo esto de esta forma, el eje horizontal, sera 'x' y es el primer valor que deber introducir, la primera posicion sera 1, mientras que la ultima sera la 9.\n");
-    printf("Mientras que el eje vertical, ira en el mismo sentido.\n");
+    printf("Para ello deberas introducir primero el valor de la coordenada, donde quieras poner el valor.\n");
+    printf("Siendo esto de esta forma, el eje vertical, sera 'y' y es el primer valor que debes introducir, la primera posicion sera 1, mientras que la ultima sera la 9, de arriba a abajo.\n");
+    printf("Mientras que el eje horizontal, ira en el mismo sentido, de izquierda a derecha y de 1 a 9.\n");
     printf("Los ceros son los valores que debes cambiar para completar el sudoku.\n");
+    printf("Solo se permite un intento por coordenada, si crees que esta mal, sal y vuelve a intentarlo.\n");
+    
+    //Sudoku
     int sudoku [9] [9];
 
     int fila, columna, a, i, b, j;
-
+    
+    //Ceros
     zeros(sudoku, 9, 9);
 
     int a1, a2;
-
-    for(i=0; i<57; i++)
+    
+    sudoku[0][0]=7;
+    sudoku[0][1]=5;
+    sudoku[0][5]=4;
+    sudoku[0][7]=9;
+    sudoku[0][8]=2;
+    sudoku[1][0]=6;
+    sudoku[1][4]=2;
+    sudoku[1][6]=3;
+    sudoku[2][1]=2;
+    sudoku[2][6]=5;
+    sudoku[3][0]=1;
+    sudoku[3][1]=3;
+    sudoku[3][4]=7;
+    sudoku[3][6]=8;
+    sudoku[4][0]=2;
+    sudoku[4][3]=8;
+    sudoku[4][4]=1;
+    sudoku[4][5]=3;
+    sudoku[5][1]=6;
+    sudoku[5][4]=4;
+    sudoku[5][6]=7;
+    sudoku[5][8]=1;
+    sudoku[6][2]=7;
+    sudoku[6][4]=5;
+    sudoku[6][7]=6;
+    sudoku[7][0]=5;
+    sudoku[7][5]=1;
+    sudoku[7][8]=3;
+    sudoku[8][1]=1;
+    sudoku[8][2]=2;
+    sudoku[8][4]=8;
+    sudoku[8][5]=6;
+    sudoku[8][6]=9;
+    sudoku[8][7]=7;
+    
+    for(i=0; i<47; i++)
     {
             imprimir_matriz(sudoku, 9, 9);
             printf("Dame el valor de la fila primero y después de la columna, donde quieras introducir el valor.\n");
@@ -239,24 +281,25 @@ void zeros(int sudoku[9][9], int fila, int columna)
 
 void imprimir_matriz(int sudoku[9][9], int fila, int columna)
 {
-    printf("____________________________________\n");
-    printf("|                                   |\n");
-    printf("| 7   6   %d   %d   %d   4   %d   %d   2 |\n", sudoku[0][2], sudoku[0][3], sudoku[0][4], sudoku[0][6], sudoku[0][7]);
-    printf("|                                   |\n");
-    printf("| 6   %d   %d   %d   2   %d   3   %d   %d |\n", sudoku[1][1], sudoku[1][2], sudoku[1][3], sudoku[1][5], sudoku[1][7], sudoku[1][8]);
-    printf("|                                   |\n");
-    printf("| %d   2   %d   %d   %d   %d   5   %d   %d |\n", sudoku[2][0], sudoku[2][2], sudoku[2][3], sudoku[2][4], sudoku[2][5], sudoku[2][7], sudoku[2][8]);
-    printf("|                                   |\n");
-    printf("| %d   3   %d   %d   7   %d   %d   %d   %d |\n", sudoku[3][0], sudoku[3][2], sudoku[3][3], sudoku[3][5], sudoku[3][6], sudoku[3][7], sudoku[3][8]);
-    printf("|                                   |\n");
-    printf("| 2   %d   %d   %d   1   3   %d   %d   %d |\n", sudoku[4][1], sudoku[4][2], sudoku[4][3], sudoku[4][6], sudoku[4][7], sudoku[4][8]);
-    printf("|                                   |\n");
-    printf("| %d   %d   %d   %d   4   %d   7   %d   1 |\n", sudoku[5][0], sudoku[5][1], sudoku[5][2], sudoku[5][3], sudoku[5][5], sudoku[5][7]);
-    printf("|                                   |\n");
-    printf("| %d   %d   7   %d   %d   %d   %d   %d   %d |\n", sudoku[6][0], sudoku[6][1], sudoku[6][3], sudoku[6][4], sudoku[6][5], sudoku[6][6], sudoku[6][7], sudoku[6][8]);
-    printf("|                                   |\n");
-    printf("| 5   %d   %d   %d   %d   1   %d   %d   3 |\n", sudoku[7][1], sudoku[7][2], sudoku[7][3], sudoku[7][4], sudoku[7][6], sudoku[7][7]);
-    printf("|                                   |\n");
-    printf("| %d   1   2   %d   %d   %d   %d   7   %d |\n", sudoku[8][0], sudoku[8][3], sudoku[8][4], sudoku[8][5], sudoku[8][6], sudoku[8][8]);
-    printf("_____________________________________\n");
+    printf("   1   2   3   4   5   6   7   8   9\n");
+    printf(" ____________________________________\n");
+    printf(" |                                   |\n");
+    printf("1| 7   5   %d   %d   %d   4   %d   9   2 |\n", sudoku[0][2], sudoku[0][3], sudoku[0][4], sudoku[0][6]);
+    printf(" |                                   |\n");
+    printf("2| 6   %d   %d   %d   2   %d   3   %d   %d |\n", sudoku[1][1], sudoku[1][2], sudoku[1][3], sudoku[1][5], sudoku[1][7], sudoku[1][8]);
+    printf(" |                                   |\n");
+    printf("3| %d   2   %d   %d   %d   %d   5   %d   %d |\n", sudoku[2][0], sudoku[2][2], sudoku[2][3], sudoku[2][4], sudoku[2][5], sudoku[2][7], sudoku[2][8]);
+    printf(" |                                   |\n");
+    printf("4| 1   3   %d   %d   7   %d   8   %d   %d |\n", sudoku[3][2], sudoku[3][3], sudoku[3][5], sudoku[3][7], sudoku[3][8]);
+    printf(" |                                   |\n");
+    printf("5| 2   %d   %d   8   1   3   %d   %d   %d |\n", sudoku[4][1], sudoku[4][2], sudoku[4][6], sudoku[4][7], sudoku[4][8]);
+    printf(" |                                   |\n");
+    printf("6| %d   6   %d   %d   4   %d   7   %d   1 |\n", sudoku[5][0], sudoku[5][2], sudoku[5][3], sudoku[5][5], sudoku[5][7]);
+    printf(" |                                   |\n");
+    printf("7| %d   %d   7   %d   5   %d   %d   6   %d |\n", sudoku[6][0], sudoku[6][1], sudoku[6][3], sudoku[6][5], sudoku[6][6], sudoku[6][8]);
+    printf(" |                                   |\n");
+    printf("8| 5   %d   %d   %d   %d   1   %d   %d   3 |\n", sudoku[7][1], sudoku[7][2], sudoku[7][3], sudoku[7][4], sudoku[7][6], sudoku[7][7]);
+    printf(" |                                   |\n");
+    printf("9| %d   1   2   %d   8   6   9   7   %d |\n", sudoku[8][0], sudoku[8][3], sudoku[8][8]);
+    printf(" _____________________________________\n");
 }
