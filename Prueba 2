@@ -62,16 +62,18 @@ int main()
     sudoku[8][6]=9;
     sudoku[8][7]=7;
     
-    for(i=0; i<47; i++)
+    do
     {
-            imprimir_matriz(sudoku, 9, 9);
-            printf("Dame el valor de la fila primero y después de la columna, donde quieras introducir el valor.\n");
-            scanf("%d %d", &a, &b);
-            fila=a-1;
-            columna=b-1;
-            printf("Ahora deme el valor que desee introducir.\n");
-            scanf("%d", &sudoku[fila][columna]);
+        imprimir_matriz(sudoku, 9, 9);
+        printf("Dame el valor de la fila primero y después de la columna, donde quieras introducir el valor.\n");
+        scanf("%d %d", &a, &b);
+        fila=a-1;
+        columna=b-1;
+        printf("Ahora deme el valor que desee introducir.\n");
+        scanf("%d", &sudoku[fila][columna]);
+        printf("Para finalizar programa pulse 0.\n");
     }
+    while(sudoku[fila][columna]==0);
     imprimir_matriz(sudoku, 9, 9);
 
     int sumaf=0, sumac=0;
