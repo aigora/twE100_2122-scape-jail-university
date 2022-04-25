@@ -1,32 +1,32 @@
 #include<stdio.h>
 
+
 void imprimir_matriz(int sudoku [9][9], int fila, int columna);
 void zeros(int sudoku[9][9], int fila, int columna);
 
 int main()
 {
-    //Estructura
     int x[8];
     int y[8];
     
-    //Entrada
+    //Instrucciones para el usuario.
     printf("Bienvenido a la prueba de matematicas, en esta prueba deberas resolver un sudoku.\n");
     printf("Para ello deberas introducir primero el valor de la coordenada, donde quieras poner el valor.\n");
     printf("Siendo esto de esta forma, el eje vertical, sera 'y' y es el primer valor que debes introducir, la primera posicion sera 1, mientras que la ultima sera la 9, de arriba a abajo.\n");
     printf("Mientras que el eje horizontal, ira en el mismo sentido, de izquierda a derecha y de 1 a 9.\n");
     printf("Los ceros son los valores que debes cambiar para completar el sudoku.\n");
-    printf("Solo se permite un intento por coordenada, si crees que esta mal, sal y vuelve a intentarlo.\n");
+    printf("Tienes tres intentos.\n");
     
-    //Sudoku
+    //Declaracion del sudoku.
     int sudoku [9] [9];
 
-    int fila, columna, a, i, b, j;
+    //Declaracion de variables.
+    int fila, columna, a, b, fallo, i, j, acierto;
     
-    //Ceros
+    //Llamada de funcion inicial.
     zeros(sudoku, 9, 9);
-
-    int a1, a2;
     
+    //Son los valores que ya tiene el sudoku cuando se lo mostramos al usuario.
     sudoku[0][0]=7;
     sudoku[0][1]=5;
     sudoku[0][5]=4;
@@ -62,213 +62,75 @@ int main()
     sudoku[8][6]=9;
     sudoku[8][7]=7;
     
+    //Sudoku solución
+    int sudokusol [9][9]=
+    {
+        {7, 5, 8, 1, 3, 4, 6, 9, 2},
+        {6, 9, 1, 5, 2, 8, 3, 4, 7},
+        {4, 2, 3, 9, 6, 7, 5, 1, 8},
+        {1, 3, 4, 6, 7, 5, 8, 2, 9},
+        {2, 7, 9, 8, 1, 3, 4, 5, 6},
+        {8, 6, 5, 2, 4, 9, 7, 3, 1},
+        {9, 8, 7, 3, 5, 2, 1, 6, 4},
+        {5, 4, 6, 7, 9, 1, 2, 8, 3},
+        {3, 1, 2, 4, 8, 6, 9, 7, 5},
+    };
+    //Inicializamos las variables y le enseñamos el sudoku.
+    acierto=0;
+    fallo=0;
+    fila=0;
+    columna=0;
+    imprimir_matriz(sudoku, 9, 9);
+    
+    //Hacemos que el usuario nos de todos los datos necesarios para completar el sudoku
+    //Comprobamos los valores que nos da con los valores que tenemos guardados en la matriz solución.
+    //Pararemos el bucle cuando falle 3 veces o cuando nos introduzca un cero.
     do
     {
-        imprimir_matriz(sudoku, 9, 9);
         printf("Dame el valor de la fila primero y después de la columna, donde quieras introducir el valor.\n");
         scanf("%d %d", &a, &b);
         fila=a-1;
         columna=b-1;
         printf("Ahora deme el valor que desee introducir.\n");
-        scanf("%d", &sudoku[fila][columna]);
+        scanf("%d", &i);
+        sudoku[fila][columna]=i;
+        j=sudokusol[fila][columna];
+        if(i!=j)
+        {
+            fallo=fallo+1;
+            printf("Has fallado, te queda un intento menos.\n");
+            if(fallo==3)
+            {
+                printf("Has perdido.\n");
+            }
+        }
         printf("Para finalizar programa pulse 0.\n");
+        imprimir_matriz(sudoku, 9, 9);
     }
-    while(sudoku[fila][columna]==0);
-    imprimir_matriz(sudoku, 9, 9);
-
-    int sumaf=0, sumac=0;
-//Filas
-    for (i=0; i<9; i++)
+    while((sudoku[fila][columna]!=0) && (fallo !=3));
+    //Miramos el número de aciertos
+    for(i=0; i<9; i++)
     {
         for (j=0; j<9; j++)
         {
-            sumaf = sudoku[i][j] + sumaf;
-            if (sumaf == 45)
+            if(sudoku[i][j]==sudokusol[i][j])
             {
-                a1++;
+                acierto=acierto+1;
             }
         }
     }
-    if(sumaf =! 9)
+    //Comprobamos el sudoku
+    if(acierto==81)
     {
-        printf("Has fallado.\n");
+        printf("Felicidades has pasado la prueba, aqui tienes la llave de matemáticas.\n");
     }
-//Columnas
-    for (i=0; i<9; i++)
+    else
     {
-        for (j=0; j<9; j++)
-        {
-            sumac = sudoku[j][i] + sumac;
-            if (sumac == 45)
-            {
-                a2++;
-            }
-        }
-    }
-    if (sumac =! 9)
-    {
-        printf("Has fallado.\n");
-    }
-//Falta comprobar que no repitan numeros.
-    int fallo;
-    for (i=0; i<9; i++)
-    {
-        for (j=1; j<9; j++)
-        {
-           if(sudoku[i][0]==sudoku[i][j])
-           {
-               fallo=1;
-           }
-        }
-        for (j=2; j<9; j++)
-        {
-            if((sudoku[i][1]==sudoku[i][0]) || (sudoku[i][1]==sudoku[i][j]))
-            {
-                fallo=1;
-            }
-        }
-        for (j=3; j<9; j++)
-        {
-            if((sudoku[i][2]==sudoku[i][0]) || (sudoku[i][2]==sudoku[i][1]) || (sudoku[i][2]==sudoku[i][j]))
-            {
-                fallo=1;
-            }
-        }
-        for (j=4; j<9; j++)
-        {
-            if((sudoku[i][3]==sudoku[i][0]) || (sudoku[i][3]==sudoku[i][1]) || (sudoku[i][3]==sudoku[i][2]) || (sudoku[i][3]==sudoku[i][j]))
-            {
-                fallo=1;
-            }
-        }
-        for (j=5; j<9; j++)
-        {
-            if((sudoku[i][4]==sudoku[i][0]) || (sudoku[i][4]==sudoku[i][1]) || (sudoku[i][4]==sudoku[i][2]) || (sudoku[i][4]==sudoku[i][3]) || (sudoku[i][4]==sudoku[i][j]))
-            {
-                fallo=1;
-            }
-        }
-        for (j=0; j<5; j++)
-        {
-            if((sudoku[i][5]==sudoku[i][6]) || (sudoku[i][5]==sudoku[i][7]) || (sudoku[i][5]==sudoku[i][8]) || (sudoku[i][5]==sudoku[i][9]) || (sudoku[i][5]==sudoku[i][j]))
-            {
-                    fallo=1;
-            }
-        }
-        for (j=0; j<6; j++)
-        {
-            if((sudoku[i][6]==sudoku[i][7]) || (sudoku[i][6]==sudoku[i][8]) || (sudoku[i][6]==sudoku[i][9]) || (sudoku[i][6]==sudoku[i][j]))
-            {
-                fallo=1;
-            }
-        }
-        for (j=0; j<7; j++)
-        {
-            if((sudoku[i][7]==sudoku[i][8]) || (sudoku[i][7]==sudoku[i][9]) || (sudoku[i][7]==sudoku[i][j]))
-            {
-                fallo=1;
-            }
-        }
-        for (j=0; j<8; j++)
-        {
-            if((sudoku[i][8]==sudoku[i][9]) || (sudoku[i][8]==sudoku[i][j]))
-            {
-                fallo=1;
-            }
-        }
-        for (j=0; j<9; j++)
-        {
-            if((sudoku[i][9]==sudoku[i][j]))
-            {
-                fallo=1;
-            }
-        }
-        if (fallo==1)
-        {
-            printf("Reintenta la prueba.\n");
-        }
-    }
-//Cuadrados.
-    int tot1=0, tot2=0, tot3=0, tot4=0, tot5=0, tot6=0, tot7=0, tot8=0, tot9=0, sc1=0, sc2=0, sc3=0, sc4=0, sc5=0, sc6=0, sc7=0, sc8=0, sc9=0;
-    for (i=0; i<3; i++)
-    {
-        for (j=0; j<3 ;j++)
-        {
-            sc1=sc1+sudoku[i][j];
-        }
-        tot1=tot1+sc1;
-    }
-    for (i=0; i<3; i++)
-    {
-        for (j=3; j<6 ;j++)
-        {
-            sc2=sc2+sudoku[i][j];
-        }
-        tot2=tot2+sc2;
-    }
-    for (i=0; i<3; i++)
-    {
-        for (j=6; j<9 ;j++)
-        {
-            sc3=sc3+sudoku[i][j];
-        }
-        tot3=tot3+sc3;
-    }
-    for (i=3; i<6; i++)
-    {
-        for (j=0; j<3 ;j++)
-        {
-            sc4=sc4+sudoku[i][j];
-        }
-        tot4=tot4+sc4;
-    }
-    for (i=3; i<6; i++)
-    {
-        for (j=3; j<6 ;j++)
-        {
-            sc5=sc5+sudoku[i][j];
-        }
-        tot5=tot5+sc5;
-    }
-    for (i=3; i<6; i++)
-    {
-        for (j=6; j<9 ;j++)
-        {
-            sc6=sc6+sudoku[i][j];
-        }
-        tot6=tot6+sc6;
-    }
-    for (i=6; i<9; i++)
-    {
-        for (j=0; j<3 ;j++)
-        {
-            sc7=sc7+sudoku[i][j];
-        }
-        tot7=tot7+sc7;
-    }
-    for (i=6; i<9; i++)
-    {
-        for (j=3; j<6 ;j++)
-        {
-            sc8=sc8+sudoku[i][j];
-        }
-        tot8=tot8+sc8;
-    }
-    for (i=6; i<9; i++)
-    {
-        for (j=6; j<9 ;j++)
-        {
-            sc9=sc9+sudoku[i][j];
-        }
-        tot9=tot9+sc9;
-    }
-    if((tot1 =! 45) || (tot2 =! 45) || (tot3 =! 45) || (tot4 =! 45) || (tot5 =! 45) || (tot6 =! 45) || (tot7 =! 45) || (tot8 =! 45) || (tot9 =! 45))
-    {
-        printf("Has fallado, vuelve a intentarlo.\n");
+        printf("Lo siento pero has fallado.\n");
     }
     return 0;
 }
-
+//Convertir todos los huecos en ceros.
 void zeros(int sudoku[9][9], int fila, int columna)
 {
     int i=0, j=0;
@@ -280,7 +142,7 @@ void zeros(int sudoku[9][9], int fila, int columna)
         }
     }
 }
-
+//Funcion para ver los cambios de la matriz.
 void imprimir_matriz(int sudoku[9][9], int fila, int columna)
 {
     printf("   1   2   3    4   5   6     7   8   9\n");
