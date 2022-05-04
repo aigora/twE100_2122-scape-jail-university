@@ -9,11 +9,14 @@ typedef struct
     int work;
 }integrante;
 
+int pruebaFisica(float llave1);
+int pruebaMates(float llave2);
 
 int main ()
 {
     char equipo[31];
-    int a, b;
+    float llave1, llave2;
+    int a, b, p1, p2;
     printf("\tBienvenidos al Scape Room University, aqui podran disfrutar de una aventura unica en la que deberan pasar todas las pruebas para salir de la universidad.\n");
     do
     {
@@ -68,5 +71,8 @@ int main ()
         }
         while(b==2);
     }
+    printf("\n");
+    p1=pruebaFisica(llave1);
+    p2=pruebaMates(llave2);
     return 0;
 }
