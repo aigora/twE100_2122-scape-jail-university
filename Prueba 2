@@ -4,10 +4,8 @@
 void imprimir_matriz(int sudoku [9][9], int fila, int columna);
 void zeros(int sudoku[9][9], int fila, int columna);
 
-int main()
+int pruebaMates(float llave2)
 {
-    int x[8];
-    int y[8];
     
     //Instrucciones para el usuario.
     printf("Bienvenido a la prueba de matematicas, en esta prueba deberas resolver un sudoku.\n");
