@@ -1,5 +1,7 @@
 #include<stdio.h>
-
+#include<time.h>
+#include<stdlib.h>
+#include<windows.h>
 
 void imprimir_matriz(int sudoku [9][9], int fila, int columna);
 int zeros(int sudoku[9][9], int fila, int columna);
