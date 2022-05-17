@@ -8,14 +8,23 @@ float fuerza(float masa2, float aceleracion);
 
 int pruebaFisica(float llave1)
 {
+    //Declaracion de variables.
     int pruebaFisica;
-
+    char letterfis, intro, letter;
+    int p1;
+    float p2, sol;
+    
     //Generador aleatorio.
     int n1, n2, n3;
     srand(time(NULL));
     n1=((double)rand()/RAND_MAX)*(3-1)+1;
     n2=((double)rand()/RAND_MAX)*(3-1)+1;
     n3=((double)rand()/RAND_MAX)*(3-1)+1;
+    
+    //Introducción a la prueba.
+    printf("\tAcabas de entrar en la prueba de fisica, se te haran varias pruebas y deberas superar todas para conseguir una de las llaves para salir de la prision\n");
+    printf("\tPulse cualquier letra para continuar\n");
+    scanf(" %c", &intro);
     
     //Pregunta aleatoria
     switch(n1)
@@ -190,11 +199,12 @@ int pruebaFisica(float llave1)
     printf("\n");
 
     //Pregunta 2
-    float p2, sol;
+    
     switch (n2)
     {
-    case '1':
+    case 1:
         {
+            //Declaracion de variables
             float tiempo1, tiempo2;
             printf("Segunda pregunta: ¿Donde estara un tren que sale desde Madrid hasta Santander con una velocidad inicial de 25 metros/segundos, una aceleracion de 0.05 metros por segundo durante media hora, si el tiempo transcurrido son 2 horas?\n");
             printf("La solucion en kilometros.\n");
@@ -210,7 +220,7 @@ int pruebaFisica(float llave1)
             }
         }
     break;
-    case '2':
+    case 2:
         {
             float velocidad, masa;
             printf("Segunda pregunta: ¿Cual sera la energia cinetica que desprende un cuerpo que tiene una masa de quinientos gramos y un velocidad estable de setetenta y dos kilómetros por hora.\n");
@@ -227,7 +237,7 @@ int pruebaFisica(float llave1)
             }
         }
     break;
-    case '3':
+    case 3:
         {
             float masa2, aceleracion;
             printf("Segunda pregunta: ¿Cual sera la fuerza a aplicar sobre un cuerpo de masa tres mil quinientos gramos y se lo queremos mover a dieciocho (km/h^2)");
@@ -251,17 +261,73 @@ int pruebaFisica(float llave1)
     printf("\n");
 
     //Pregunta 3.
-    char letra;
-    printf("Tenemos este acertijo: 'Cuanto más gorda está mayor es el amor.'\n");
-    printf("Esto significa:\n A)Los protones siempre se acercan a los neutrones.\n B)A mayor volumen, mayor capacidad.\n C)Cuanto más peso, mayor fuerza de atraccion.\n");
-    scanf(" %c", &letra);
-    if ((letra == 67) || (letra == 99))
+    
+    switch (n3)
     {
-        printf("Has conseguido una de llaves\n");
-    }
-    else
-    {
-         printf("Has fallado\n");
+    //Opcion 1
+    case 1:
+        {
+            printf("\tTenemos este acertijo: 'Cuanto mas gorda esta mayor es el amor.'\n");
+            printf("\tEsto significa:\n\tA)Los protones siempre se acercan a los neutrones.\n\tB)A mayor volumen, mayor capacidad.\n\tC)Cuanto más peso, mayor fuerza de atraccion.\n");
+            scanf(" %c", &letter);
+            //Comprobación
+            if ((letter == 67) || (letter == 99))
+            {
+                //Acierto
+                printf("\tHas conseguido una de las llaves\n");
+                p3=1;
+            }
+            else
+            {
+                //Fallo
+                printf("\tHas fallado\n");
+            }
+        }
+    break;
+    //Opción 2
+    case 2:
+        {
+            printf("\tTenemos una duda, ¿Quien dedujo la ley de la gravedad?\n");
+            printf("\tLas soluciones son:\n\tA)Newton.\n\tB)Einstein.\n\tC)Pitagoras.\n");
+            scanf(" %c", &letter);
+            //Comprobacion
+            if ((letter == 65) || (letter == 97))
+            {
+                //Acierto
+                printf("\tHas conseguido una de las llaves\n");
+                p3=1;
+            }
+            else
+            {
+                //Fallo
+                printf("\tHas fallado\n");
+            }
+        }
+    break;
+    //Opción 3
+    case 3:
+        {
+            printf("\t¿En que unidades se define peso (S.I.)?\n");
+            printf("\tElija una de las soluciones:\n\tA)Kilogramos\n\tB)Newtons\n\tC)Kilogramos*kilometros/segundos.\n");
+            scanf(" %c", &letter);
+            //Comprobación
+            if ((letter == 66) || (letter == 98))
+            {
+                //Acierto
+                printf("\tHas conseguido una de las llaves\n");
+                p3=1;
+            }
+            else
+            {
+                //Fallo
+                printf("\tHas fallado\n");
+            }
+        }
+    break;
+    default:
+            //Caso de fallo del código
+            printf("\tNULL.\n");
+    break;
     }
     printf("\n");
 
@@ -275,7 +341,9 @@ int pruebaFisica(float llave1)
         printf("Lo siento, seguiras en este infierno un year mas\n");
     }
     printf("\n");
-    return 0;
+    printf("Pulse cualquier tecla para continuar y dele al intro.\n");
+    scanf(" %c", &letterfis);
+    system("cls");
 }
 
 float posicion (float tiempo1, float tiempo2)
