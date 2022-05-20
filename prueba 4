@@ -13,9 +13,7 @@ scanf("%c",&intro);
 tablero1();
 int i;
 scanf("%d",&i);
-if i= 1.1;
 
-    printf("Ha derribado un barco, continue");
 
 
 void tablero1()
