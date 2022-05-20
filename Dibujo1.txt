@@ -1,0 +1,12 @@
+Verticales.
+1- Sistemas de acotacion para leer en un lenguaje internacional cualquier proyecto dibujado en un plano respecto a una normas referencias ISO.
+2- Recta que intersecta a otra y forma un angulo recto o de noventa grados.
+3- Representacion de una figura desde un punto de vista frontal.
+4- Representacion de una figura desde un punto de vista lateral.
+Horizontales.
+5- Interseccion en un punto entre dos figuras geometricas en un plano definido.
+6- Recta que divide un angulo en dos angulos diferentes del mismo valor.
+7- Correspondiente con el segundo teorema de Tales, circunferencia cuyo diámetro es el segmento AB, su nombre es: Arco ___ .
+8- Medidas que toma un figura al ser acotada.
+9- Representacion de una figura desde un punto de vista superior.
+10- (Sustantivo masculino individual) recta que nunca intersecciona con otra recta.;

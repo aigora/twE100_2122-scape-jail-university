@@ -1,0 +1,13 @@
+Verticales.
+1- Sustantivo, significa de igual medida, una figura conserva sus medidas al ser representado.
+2- Punto en el que concurren dos lados de un ángulo.
+3- Proyección cilindrica oblicua de un objeto sobre un plano, para respresentar la figura en tres dimensiones.
+4- Porción de plano comprendida entre dos semirectas que se unen en un vértice. Generan una apertura representada por un arco.
+5- Sinómino de sección, sirve para hacer visible aquellas partes interiores, eliminando las aristas que se encuentran delante.
+6- Recta delimitada por dos puntos, uno inicial y otro final.
+
+Horizontales.
+1- Proporción entre las dimensiones de un dibujo y las del objeto que representa.
+2- Punto en común entre dos recta que se unen en un punto.
+3- Elemento constructivo sobre el que se guía el dibujo a realizar, sirve para conocer las proporciones a representar.
+4- Recta que divide a otra por su punto medio.

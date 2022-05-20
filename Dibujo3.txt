@@ -1,0 +1,13 @@
+Verticales.
+1- Punto central de una circunferencia que está a la misma distancia de todos los puntos de esta.
+2- Representación gráfica de un objeto o área en una superficie bidimensional.
+3- Herramienta gráfica empleada para realizar representaciones gráficas en ordenador.
+4- Poliedro cuya base es un polígono cualquiera y cuyos lados son caras laterales son triángulo con un vértice común.
+5- Tipo de recta. Recta que intersecciona con otra en algún punto.
+
+Horizontales.
+1- Valor de inclinación de una recta respecto al eje vertical y horizontal.
+2- El doble de la longitud de cualquier punto de la circunferencia al centro.
+3- Linea que representa la longitud de la hipotenusa en un cono, cuyo catetos son la altura y el radio de la base.
+4- Intrumento que se emplea para realizar circunferencias en papel.
+5- Ángulo de noventa grados.
