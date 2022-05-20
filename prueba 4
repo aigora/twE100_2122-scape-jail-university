@@ -1,6 +1,37 @@
-include <stdio.h>
-int main ()
+#include <stdio.h>
+void tablero1();
+int main()
 {
-printf("Bienvenido a la prueba de biología.\n");
+    char intro;
+    printf("'HUNDIR LA FLOTA'\n");
+    printf("Durante esta prueba intentar descubrir en que casilla hay un barco (*)\n");
+    printf("La forma de seleccionar la casilla que desea descubrir, \n");
+    printf("sera introduciendo por teclado el numero de fila y despues el numero de columna.\n");
+
+scanf("%c",&intro);
+    printf("Elija una casilla r\n");
+tablero1();
+int i;
+scanf("%d",&i);
+if i= 1.1;
+
+    printf("Ha derribado un barco, continue");
+
+
+void tablero1()
+{
+    printf("   1   2   3    4   5  \n");
+    printf(" |---|---|----|---|---|\n");
+    printf("1| * |   |    |   |   |\n");
+    printf(" |---|---|----|---|---|\n");
+    printf("2|   |   |  * |   |   |\n");
+    printf(" |---|---|----|---|---|\n");
+    printf("3|   | * |    |   | * |\n");
+    printf(" |---|---|----|---|---|\n");
+    printf("4|   | * |    |   | * |\n");
+    printf(" |---|---|----|---|---|\n");
+    printf("5|   | * |    |   |   |\n");
+    printf(" |---|---|----|---|---|\n");
+
 
 }
