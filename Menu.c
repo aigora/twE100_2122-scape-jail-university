@@ -4,9 +4,9 @@
 
 typedef struct
 {
-    char nombre[20];
-    char apellido1[20];
-    char apellido2[20];
+    char nombre[21];
+    char apellido1[21];
+    char apellido2[21];
     int edad;
     char work;
 }integrante;
