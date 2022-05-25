@@ -4,18 +4,17 @@
 
 typedef struct
 {
-    char nombre[21];
-    char apellido1[21];
-    char apellido2[21];
+    char nombre[20];
+    char apellido1[20];
+    char apellido2[20];
     int edad;
     char work;
 }integrante;
 
-void menu(int jugadores)
+void menu(int jugadores, int save)
 {
     char equipo[31];
-    int a, b;
-    int p1, p2, p3;
+    char a, b;
     int n, i=0;
     printf("\tBienvenidos al Scape Room University, aqui podran disfrutar de una aventura unica en la que deberan pasar todas las pruebas para salir de la universidad.\n");
     printf("\tAntes de empezar la prueba, deberan elegir el nombre del equipo (maximo treinta caracteres).\n");
@@ -30,21 +29,24 @@ void menu(int jugadores)
     }
     while(a != 49);
     system("cls");
-    
-    printf("\tDecirme cuantos integrantes sois.\n");
-    scanf("%d", &n);
-    
+//    do
+//    {
+        printf("\tDecirme cuantos integrantes sois.\n");
+        scanf("%d", &n);
+//        if()
+//    }
+//    while();
     integrante jugador[n];
     for (i=0; i<n; i++)
     {
         do
         {
             printf("\tNombre: \t");
-            scanf("%20[^\n]", jugador[i].nombre);
+            scanf(" %20[^\n]", jugador[i].nombre);
             printf("\n\tPrimer apellido: \t");
-            scanf("%20[^\n]", jugador[i].apellido1);
+            scanf(" %20[^\n]", jugador[i].apellido1);
             printf("\n\tSegundo apellido: \t");
-            scanf("%20[^\n]", jugador[i].apellido2);
+            scanf(" %20[^\n]", jugador[i].apellido2);
             do
             {
                 printf("\n\tEdad: \t");
@@ -88,10 +90,10 @@ void menu(int jugadores)
                 printf("\tNi estudiante, ni trabajador.\n");
             }
             printf("\tMarque una de las respuestas:\n\t1)Si\n\t2)No\n");
-            scanf("%d", &b);
+            scanf(" %c", &b);
             if((b != 49)&&(b != 50))
             {
-                    printf("\tIntroduzca el valor numérico.\n");
+                    printf("\tIntroduzca el valor numerico.\n");
             }
             if(b != 49)
             {
@@ -99,6 +101,10 @@ void menu(int jugadores)
             }
         }
         while(b != 49);
+
+//        FILE *pf;
+//        pf("Misdatos.txt", "w");
+
         system("cls");
     }
     printf("\n");
