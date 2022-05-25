@@ -40,11 +40,11 @@ void menu(int jugadores)
         do
         {
             printf("\tNombre: \t");
-            scanf("%20[^\n]", &jugador[i].nombre);
+            scanf("%20[^\n]", jugador[i].nombre);
             printf("\n\tPrimer apellido: \t");
-            scanf("%20[^\n]", &jugador[i].apellido1);
+            scanf("%20[^\n]", jugador[i].apellido1);
             printf("\n\tSegundo apellido: \t");
-            scanf("%20[^\n]", &jugador[i].apellido2);
+            scanf("%20[^\n]", jugador[i].apellido2);
             do
             {
                 printf("\n\tEdad: \t");
