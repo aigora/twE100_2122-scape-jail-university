@@ -2,18 +2,22 @@
 #include<time.h>
 #include<stdlib.h>
 
-void menu(int jugadores);
+void menu(int modo);
 int pruebaFisica(int modo);
 int pruebaMates(int modo);
 int pruebaDibujo(int modo);
+int pruebaBiologia(int modo);
+int pruebaQuimica(int modo);
+int pruebaFabricacion(int modo);
 int mapa(char op);
 
 int main()
 {
-    int p1, p2, p3, n, op, jugadores, modo, save=0, n1;
-    char partida, random, seguridad;
-    n=mapa(op);
-//    Partida nueva o guardada.
+    int p1, p2, p3, p4, p5, p6, modo, save=0, n1, n, op;
+    char partida, random, seguridad, resp;
+
+//    n=mapa(op);
+
     do
     {
         printf("\tSelecciona una de estas opciones:\n\t1)Partida guardada.\n\t2)Partida nueva.\n");
@@ -21,11 +25,8 @@ int main()
         scanf(" %c", &partida);
         if(partida==50)
         {
-            //Si es una partida nueva para tendrás que meter los datos de los participantes.
-            menu(jugadores, save);
             do
             {
-                //Elección del modo de juego durante la partida, principalmente, es para que tengas mayor numero de intentos a la hora de hacer las pruebas.
                 printf("\tAhora elija el modo de juego, tiene tres modos de dificultad:\n");
                 printf("\t1)Facil.\n\t2)Medio.\n\t3)Dificil.\n");
                 printf("\tLe recuerdo que con cada modalidad tendra un tipo de pruebas, adapatadas al modo de partida que elija.\n");
@@ -37,6 +38,7 @@ int main()
             }
             while((modo<1)||(modo>4));
             system("cls");
+            /*menu(modo);*/
         }
         else if(partida==49)
         {
@@ -46,9 +48,8 @@ int main()
     }
     while((partida != 49)&&(partida != 50));
 
-   do
+    do
     {
-        //Por si se prefiere hacer un juego en el que el orden de las pruebas sea aleatorio.
         printf("\t¿Quieres randomizar el juego, es decir, que salga aleatoriamente las pruebas?.\n");
         printf("\t1)Si\n\t2)No\n");
         scanf(" %c", &random);
@@ -56,7 +57,6 @@ int main()
         {
             do
             {
-                //Confirmacion, ya que este apartado es invariable durante la partida.
                 printf("\t¿Estas seguro que quieres poner aleatorio?.\n");
                 printf("\t1)Si\n\t2)No\n");
                 scanf(" %c", &seguridad);
@@ -64,13 +64,12 @@ int main()
             while((seguridad != 49)&&(seguridad != 50));
             if(seguridad == 49)
             {
-                //Los aleatorios
                 n1=((double)rand()/RAND_MAX)*(3-1)+1;
                 switch(n1)
                 {
                 case 1:
                     {
-                        p2=pruebaMates(modo, save);
+                        p2=pruebaMates(modo);
 
                         if(p2==1)
                         {
@@ -78,10 +77,42 @@ int main()
                         }
                         else
                         {
-                            printf("\tHas fallado.\n");
+                            do
+                            {
+                                printf("\tHas fallado.\n");
+                                printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                scanf(" %c", &resp);
+                                if((resp == 'S')||(resp == 's'))
+                                {
+                                    p2=pruebaMates(modo);
+                                }
+                            }
+                            while((resp == 'S')||(resp == 's'));
                         }
 
-                        p1=pruebaFisica(modo, save);
+//                        p4=pruebaBiologia(modo);
+//
+//                        if(p4==1)
+//                        {
+//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//                        }
+//                        else
+//                        {
+//                            printf("\tHas fallado.\n");
+//                        }
+//
+//                        p6=pruebaFabricacion;
+//
+//                        if(p6==1)
+//                        {
+//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//                        }
+//                        else
+//                        {
+//                            printf("\tHas fallado.\n");
+//                        }
+
+                        p1=pruebaFisica(modo);
 
                         if(p1 == 1)
                         {
@@ -89,10 +120,20 @@ int main()
                         }
                         else
                         {
-                            printf("\tHas fallado.\n");
+                            do
+                            {
+                                printf("\tHas fallado.\n");
+                                printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                scanf(" %c", &resp);
+                                if((resp == 'S')||(resp == 's'))
+                                {
+                                    p1=pruebaFisica(modo);
+                                }
+                            }
+                            while((resp == 'S')||(resp == 's'));
                         }
 
-                        p3=pruebaDibujo(modo, save);
+                        p3=pruebaDibujo(modo);
 
                         if(p3==1)
                         {
@@ -100,13 +141,34 @@ int main()
                         }
                         else
                         {
-                            printf("\tHas fallado.\n");
+                            do
+                            {
+                                printf("\tHas fallado.\n");
+                                printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                scanf(" %c", &resp);
+                                if((resp == 'S')||(resp == 's'))
+                                {
+                                    p3=pruebaDibujo(modo);
+                                }
+                            }
+                            while((resp == 'S')||(resp == 's'));
                         }
+
+//                        p5=pruebaQuimica(modo);
+//
+//                        if(p5==1)
+//                        {
+//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//                        }
+//                        else
+//                        {
+//                            printf("\tHas fallado.\n");
+//                        }
                     }
                 break;
                 case 2:
                     {
-                        p3=pruebaDibujo(modo, save);
+                        p3=pruebaDibujo(modo);
 
                         if(p3==1)
                         {
@@ -114,10 +176,31 @@ int main()
                         }
                         else
                         {
-                            printf("\tHas fallado.\n");
+                            do
+                            {
+                                printf("\tHas fallado.\n");
+                                printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                scanf(" %c", &resp);
+                                if((resp == 'S')||(resp == 's'))
+                                {
+                                    p3=pruebaDibujo(modo);
+                                }
+                            }
+                            while((resp == 'S')||(resp == 's'));
                         }
 
-                        p2=pruebaMates(modo, save);
+//                        p6=pruebaFabricacion;
+//
+//                        if(p6==1)
+//                        {
+//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//                        }
+//                        else
+//                        {
+//                            printf("\tHas fallado.\n");
+//                        }
+
+                        p2=pruebaMates(modo);
 
                         if(p2==1)
                         {
@@ -125,10 +208,31 @@ int main()
                         }
                         else
                         {
-                            printf("\tHas fallado.\n");
+                            do
+                            {
+                                printf("\tHas fallado.\n");
+                                printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                scanf(" %c", &resp);
+                                if((resp == 'S')||(resp == 's'))
+                                {
+                                    p2=pruebaMates(modo);
+                                }
+                            }
+                            while((resp == 'S')||(resp == 's'));
                         }
 
-                        p1=pruebaFisica(modo, save);
+//                        p5=pruebaQuimica(modo);
+//
+//                        if(p5==1)
+//                        {
+//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//                        }
+//                        else
+//                        {
+//                            printf("\tHas fallado.\n");
+//                        }
+
+                        p1=pruebaFisica(modo);
 
                         if(p1 == 1)
                         {
@@ -136,13 +240,45 @@ int main()
                         }
                         else
                         {
-                            printf("\tHas fallado.\n");
+                            do
+                            {
+                                printf("\tHas fallado.\n");
+                                printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                scanf(" %c", &resp);
+                                if((resp == 'S')||(resp == 's'))
+                                {
+                                    p1=pruebaFisica(modo);
+                                }
+                            }
+                            while((resp == 'S')||(resp == 's'));
                         }
+
+//                        p4=pruebaBiologia(modo);
+//
+//                        if(p4==1)
+//                        {
+//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//                        }
+//                        else
+//                        {
+//                            printf("\tHas fallado.\n");
+//                        }
                     }
                 break;
                 case 3:
                     {
-                       p2=pruebaMates(modo, save);
+//                       p4=pruebaBiologia(modo);
+//
+//                       if(p4==1)
+//                        {
+//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//                        }
+//                        else
+//                        {
+//                            printf("\tHas fallado.\n");
+//                        }
+
+                       p2=pruebaMates(modo);
 
                         if(p2==1)
                         {
@@ -150,10 +286,20 @@ int main()
                         }
                         else
                         {
-                            printf("\tHas fallado.\n");
+                            do
+                            {
+                                printf("\tHas fallado.\n");
+                                printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                scanf(" %c", &resp);
+                                if((resp == 'S')||(resp == 's'))
+                                {
+                                    p2=pruebaMates(modo);
+                                }
+                            }
+                            while((resp == 'S')||(resp == 's'));
                         }
 
-                        p3=pruebaDibujo(modo, save);
+                        p3=pruebaDibujo(modo);
 
                         if(p3==1)
                         {
@@ -161,10 +307,31 @@ int main()
                         }
                         else
                         {
-                            printf("\tHas fallado.\n");
+                            do
+                            {
+                                printf("\tHas fallado.\n");
+                                printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                scanf(" %c", &resp);
+                                if((resp == 'S')||(resp == 's'))
+                                {
+                                    p3=pruebaDibujo(modo);
+                                }
+                            }
+                            while((resp == 'S')||(resp == 's'));
                         }
 
-                        p1=pruebaFisica(modo, save);
+//                        p6=pruebaFabricacion;
+//
+//                        if(p6==1)
+//                        {
+//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//                        }
+//                        else
+//                        {
+//                            printf("\tHas fallado.\n");
+//                        }
+
+                        p1=pruebaFisica(modo);
 
                         if(p1 == 1)
                         {
@@ -172,8 +339,29 @@ int main()
                         }
                         else
                         {
-                            printf("\tHas fallado.\n");
+                            do
+                            {
+                                printf("\tHas fallado.\n");
+                                printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                scanf(" %c", &resp);
+                                if((resp == 'S')||(resp == 's'))
+                                {
+                                    p1=pruebaFisica(modo);
+                                }
+                            }
+                            while((resp == 'S')||(resp == 's'));
                         }
+
+//                        p5=pruebaQuimica(modo);
+//
+//                        if(p5==1)
+//                        {
+//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//                        }
+//                        else
+//                        {
+//                            printf("\tHas fallado.\n");
+//                        }
                     }
                 break;
                 default:
@@ -184,8 +372,7 @@ int main()
         }
         else if((seguridad == 50) || (random == 50))
         {
-            //El normal.
-            p1=pruebaFisica(modo, save);
+            p1=pruebaFisica(modo);
 
             if(p1 == 1)
             {
@@ -193,10 +380,20 @@ int main()
             }
             else
             {
-                printf("\tHas fallado.\n");
+                do
+                {
+                    printf("\tHas fallado.\n");
+                    printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                    scanf(" %c", &resp);
+                    if((resp == 'S')||(resp == 's'))
+                    {
+                        p1=pruebaFisica(modo);
+                    }
+                }
+                while((resp == 'S')||(resp == 's'));
             }
 
-            p2=pruebaMates(modo, save);
+            p2=pruebaMates(modo);
 
             if(p2==1)
             {
@@ -204,10 +401,20 @@ int main()
             }
             else
             {
-                printf("\tHas fallado.\n");
+                do
+                {
+                    printf("\tHas fallado.\n");
+                    printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                    scanf(" %c", &resp);
+                    if((resp == 'S')||(resp == 's'))
+                    {
+                        p2=pruebaMates(modo);
+                    }
+                }
+                while((resp == 'S')||(resp == 's'));
             }
 
-            p3=pruebaDibujo(modo, save);
+            p3=pruebaDibujo(modo);
 
             if(p3==1)
             {
@@ -215,10 +422,55 @@ int main()
             }
             else
             {
-                printf("\tHas fallado.\n");
+                do
+                {
+                    printf("\tHas fallado.\n");
+                    printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                    scanf(" %c", &resp);
+                    if((resp == 'S')||(resp == 's'))
+                    {
+                        p3=pruebaDibujo(modo);
+                    }
+                }
+                while((resp == 'S')||(resp == 's'));
             }
+
+//            p4=pruebaBiologia(modo);
+//
+//            if(p4==1)
+//            {
+//                printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//            }
+//            else
+//            {
+//                printf("\tHas fallado.\n");
+//            }
+//
+//            p5=pruebaQuimica(modo);
+//
+//            if(p5==1)
+//            {
+//                printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//            }
+//            else
+//            {
+//                printf("\tHas fallado.\n");
+//            }
+//
+//            p6=pruebaFabricacion;
+//
+//            if(p6==1)
+//            {
+//                printf("\tHas obtenido la llave de la prueba de dibujo.\n");
+//            }
+//            else
+//            {
+//                printf("\tHas fallado.\n");
+//            }
+
         }
     }
     while((random != 49)&&(random != 50));
+
     return 0;
 }
