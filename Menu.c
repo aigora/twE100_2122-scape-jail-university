@@ -11,7 +11,7 @@ typedef struct
     char work;
 }integrante;
 
-void menu(int jugadores, int save)
+void menu(int modo)
 {
     char equipo[31];
     char a, b;
