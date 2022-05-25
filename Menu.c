@@ -26,7 +26,7 @@ void menu(int jugadores)
         scanf(" %30[^\n]", equipo);
         printf("\t¿Entonces el nombre del equipo sera %s?\n", equipo);
         printf("\tEscriba el numero y dele al intro:\n\t1)Si\n\t2)No\n");
-        scanf("%d", &a);
+        scanf(" %c", &a);
     }
     while(a != 49);
     system("cls");
