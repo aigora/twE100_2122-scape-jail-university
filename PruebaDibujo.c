@@ -5,6 +5,7 @@
 
 void crucigrama(int n);
 void dibujo(int n);
+int comprueba(int n, int numerodib, char const *word);
 
 int pruebaDibujo(int modo)
 {
