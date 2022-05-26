@@ -9,6 +9,7 @@ int zeros(int sudoku[9][9], int fila, int columna, int V);
 int pruebaMates(int modo)
 {
     int pruebaMates;
+    FILE *pf;
 
    //Declaracion del sudoku.
     int sudoku [9] [9];
@@ -16,6 +17,7 @@ int pruebaMates(int modo)
 
     //Declaracion de variables.
     int fila, columna, a, b, fallo, i=0, j=0, acierto, V;
+    int k=1;
 
     //Instrucciones para el usuario.
     printf("\tBienvenido a la prueba de matematicas, en esta prueba deberas resolver un sudoku.\n");
@@ -37,7 +39,7 @@ int pruebaMates(int modo)
     {
         printf("\tTienes tres intentos.\n");
     }
-    //Elección del sudoku.
+    //ElecciÃ³n del sudoku.
 
     V=(int)(((double)rand()/RAND_MAX)*(3-1)+1);
     switch(V)
@@ -81,7 +83,7 @@ int pruebaMates(int modo)
                 sudoku[8][6]=9;
                 sudoku[8][7]=7;
 
-                //Sudoku solución
+                //Sudoku soluciÃ³n
 //                {
 //                        {7, 5, 8, 1, 3, 4, 6, 9, 2},
 //                        {6, 9, 1, 5, 2, 8, 3, 4, 7},
@@ -94,15 +96,22 @@ int pruebaMates(int modo)
 //                        {3, 1, 2, 4, 8, 6, 9, 7, 5}
 //                    };
                 FILE *pfmates1 = fopen("Mates1.txt","r");
-                while(fscanf(pfmates1, "%d ", &sudokusol[i][j])!= EOF)
+                if(pfmates1==NULL)
                 {
-                    j++;
-                    if(j==9)
+                    printf("\tError al abrir el fichero.\n");
+                }
+                else
+                {
+                    while(fscanf(pfmates1, "%d ", &sudokusol[i][j])!= EOF)
                     {
-                        i++;
-                        j=0;
-                    }
+                        j++;
+                        if(j==9)
+                        {
+                            i++;
+                            j=0;
+                        }
 
+                    }
                 }
                 fclose(pfmates1);
             }
@@ -142,7 +151,7 @@ int pruebaMates(int modo)
                 sudoku[8][5]=3;
                 sudoku[8][6]=6;
                 sudoku[8][8]=5;
-                //Sudoku solución
+                //Sudoku soluciÃ³n
 
 //                {
 //                    {2, 1, 9, 8, 3, 5, 7, 6, 4},
@@ -157,14 +166,20 @@ int pruebaMates(int modo)
 //                };
 
                 FILE *pfmates2 = fopen("Mates2.txt","r");
-
-                while(fscanf(pfmates2, "%d ", &sudokusol[i][j])!= EOF)
+                if(pfmates2==NULL)
                 {
-                    j++;
-                    if(j==9)
+                    printf("\tError al abrir el fichero.\n");
+                }
+                else
+                {
+                    while(fscanf(pfmates2, "%d ", &sudokusol[i][j])!= EOF)
                     {
-                        i++;
-                        j=0;
+                        j++;
+                        if(j==9)
+                        {
+                            i++;
+                            j=0;
+                        }
                     }
                 }
                 fclose(pfmates2);
@@ -204,7 +219,7 @@ int pruebaMates(int modo)
                 sudoku[8][4]=2;
                 sudoku[8][8]=8;
 
-                //Sudoku solución
+                //Sudoku soluciÃ³n
 //                {
 //                    {6, 5, 7, 4, 3, 8, 1, 2, 9},
 //                    {8, 9, 4, 7, 1, 2, 6, 3, 5},
@@ -217,13 +232,20 @@ int pruebaMates(int modo)
 //                    {5, 7, 9, 1, 2, 4, 3, 6, 8},
 //                };
                 FILE *pfmates3 = fopen("Mates3.txt","r");
-                while(fscanf(pfmates3, "%d ", &sudokusol[i][j])!= EOF)
+                if(pfmates3==NULL)
                 {
-                    j++;
-                    if(j==9)
+                    printf("\tError al abrir el fichero.\n");
+                }
+                else
+                {
+                    while(fscanf(pfmates3, "%d ", &sudokusol[i][j])!= EOF)
                     {
-                        i++;
-                        j=0;
+                        j++;
+                        if(j==9)
+                        {
+                            i++;
+                            j=0;
+                        }
                     }
                 }
                 fclose(pfmates3);
@@ -240,13 +262,13 @@ int pruebaMates(int modo)
         V=zeros(sudoku, 9, 9, V);
 
 
-        //Inicializamos las variables y le enseñamos el sudoku.
+        //Inicializamos las variables y le enseÃ±amos el sudoku.
         acierto=0;
         fila=0;
         columna=0;
 
         //Hacemos que el usuario nos de todos los datos necesarios para completar el sudoku
-        //Comprobamos los valores que nos da con los valores que tenemos guardados en la matriz solución.
+        //Comprobamos los valores que nos da con los valores que tenemos guardados en la matriz soluciÃ³n.
         //Pararemos el bucle cuando falle 3 veces o cuando nos introduzca un cero.
         if(modo==1)
         {
@@ -264,24 +286,32 @@ int pruebaMates(int modo)
                 columna=b-1;
                 printf("\tAhora deme el valor que desee introducir.\n");
                 scanf("%d", &i);
-                sudoku[fila][columna]=i;
-                j=sudokusol[fila][columna];
-                if(i!=j)
+                if(i != 0)
                 {
-                    fallo=fallo+1;
-                    printf("\tHas fallado, te queda un intento menos.\n");
-                    if(fallo==10)
+                    sudoku[fila][columna]=i;
+                    j=sudokusol[fila][columna];
+                    if(i!=j)
                     {
-                        printf("\tHas perdido.\n");
-                        sudoku[fila][columna]=0;
+                        fallo=fallo+1;
+                        printf("\tHas fallado, te queda un intento menos.\n");
+                        if(fallo==10)
+                        {
+                            printf("\tHas perdido.\n");
+                            sudoku[fila][columna]=0;
+                        }
+                    }
+                    else
+                    {
+                        printf("\tNumero Correcto.\n");
                     }
                 }
-                else
+                else if(i == 0)
                 {
-                    printf("\tNumero Correcto.\n");
+                    printf("Has salido de la prueba.\n");
+                    k=0;
                 }
             }
-            while((sudoku[fila][columna]!=0) || (fallo == 10));
+            while(k != 0);
         }
         else if(modo==2)
         {
@@ -300,24 +330,32 @@ int pruebaMates(int modo)
                 columna=b-1;
                 printf("\tAhora deme el valor que desee introducir.\n");
                 scanf("%d", &i);
-                sudoku[fila][columna]=i;
-                j=sudokusol[fila][columna];
-                if(i!=j)
+                if(i != 0)
                 {
-                    fallo=fallo+1;
-                    printf("\tHas fallado, te queda un intento menos.\n");
-                    if(fallo==5)
+                    sudoku[fila][columna]=i;
+                    j=sudokusol[fila][columna];
+                    if(i!=j)
                     {
-                        printf("\tHas perdido.\n");
-                        sudoku[fila][columna]=0;
+                        fallo=fallo+1;
+                        printf("\tHas fallado, te queda un intento menos.\n");
+                        if(fallo==5)
+                        {
+                            printf("\tHas perdido.\n");
+                            sudoku[fila][columna]=0;
+                        }
+                    }
+                    else
+                    {
+                        printf("\tNumero Correcto.\n");
                     }
                 }
-                else
+                else if(i == 0)
                 {
-                    printf("\tNumero Correcto.\n");
+                    printf("Has salido de la prueba.\n");
+                    k=0;
                 }
             }
-            while((sudoku[fila][columna]!=0) || (fallo < 5));
+            while((k!=0));
         }
         else if (modo==3)
         {
@@ -331,28 +369,32 @@ int pruebaMates(int modo)
                 scanf("%d", &a);
                 printf("\tValor de columna:\n");
                 scanf("%d", &b);
-                fila=a-1;
-                columna=b-1;
-                printf("\tAhora deme el valor que desee introducir.\n");
-                scanf("%d", &i);
-                sudoku[fila][columna]=i;
-                j=sudokusol[fila][columna];
-                if(i!=j)
+                if(i != 0)
                 {
-                    fallo=fallo+1;
-                    printf("\tHas fallado, te queda un intento menos.\n");
-                    if(fallo==3)
+                    sudoku[fila][columna]=i;
+                    j=sudokusol[fila][columna];
+                    if(i!=j)
                     {
-                        printf("\tHas perdido.\n");
-                        sudoku[fila][columna]=0;
+                        fallo=fallo+1;
+                        printf("\tHas fallado, te queda un intento menos.\n");
+                        if(fallo==3)
+                        {
+                            printf("\tHas perdido.\n");
+                            sudoku[fila][columna]=0;
+                        }
+                    }
+                    else
+                    {
+                        printf("\tNumero Correcto.\n");
                     }
                 }
-                else
+                else if(i == 0)
                 {
-                    printf("\tNumero Correcto.\n");
+                    printf("Has salido de la prueba.\n");
+                    k=0;
                 }
             }
-            while((sudoku[fila][columna]!=0));
+            while((k!=0));
         }
         //Comprobamos el sudoku
         i=0;
@@ -363,16 +405,58 @@ int pruebaMates(int modo)
             {
                 if(sudoku[i][j]==sudokusol[i][j])
                 {
-                    printf("Sud =%d, sudsol =%d\n", sudoku[i][j], sudokusol[i][j]);
                     acierto++;
                 }
             }
         }
-        if(acierto == 81)
+       switch(V)
         {
-            printf("\tFelicidades has pasado la prueba.\n");
-            pruebaMates=1;
+        case 1:
+            {
+                if(acierto == 46)
+                {
+                    printf("\tFelicidades has pasado la prueba.\n");
+                    pruebaMates=1;
+                }
+                else
+                {
+                    pruebaMates=0;
+                }
+            }
+        break;
+        case 2:
+            {
+                if(acierto == 50)
+                {
+                    printf("\tFelicidades has pasado la prueba.\n");
+                    pruebaMates=1;
+                }
+                else
+                {
+                    pruebaMates=0;
+                }
+            }
+        break;
+        case 3:
+            {
+                if(acierto == 44)
+                {
+                    printf("\tFelicidades has pasado la prueba.\n");
+                    pruebaMates=1;
+                }
+                else
+                {
+                    pruebaMates=0;
+                }
+            }
+        break;
+        default:
+            {
+                printf("\tError al hacer el recuento.\n");
+            }
         }
+    pf=fopen("Misdatos.txt", "a");
+    fprintf(pf, "p2 = %d\n", pruebaMates);
     return pruebaMates;
 }
 //Convertir todos los huecos en ceros.
@@ -470,7 +554,7 @@ void imprimir_matriz(int sudoku[9][9], int fila, int columna, int V)
         break;
         default:
 
-                //Se cambiará por un bucle infonito.
+                //Se cambiarÃ¡ por un bucle infonito.
                 printf("Error.\n");
 
         break;
