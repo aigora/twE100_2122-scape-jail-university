@@ -11,52 +11,16 @@ int pruebaDibujo(int modo)
     int pruebaDibujo;
     int n1=0, fallodib=0, i=0;
     int numerodib;
-    char palabra;
-    char palabrasol;
+    char palabra[31];
+    int c, aciertodib, longitud=0;
+    FILE *pf;
+
     srand(time(NULL));
     n1=((double)rand()/RAND_MAX)*(3-1)+1;
-    n1=1;
-    if(n1 == 1)
-    {
-        switch(numerodib)
-        {
-        case 1:
-            palabrasol="normalizacion";
-        break;
-        case 2:
-            palabrasol="perpendicular";
-        break;
-        case 3:
-            palabrasol="alzado";
-        break;
-        case 4:
-            palabrasol="perfil";
-        break;
-        case 5:
-            palabrasol="tangente";
-        break;
-        case 6:
-            palabrasol="bisectriz";
-        break;
-        case 7:
-            palabrasol="capaz";
-        break;
-        case 8:
-            palabrasol="cotas";
-        break;
-        case 9:
-            palabrasol="planta";
-        break;
-        case 10:
-            palabrasol="paralelo";
-        break;
-        default:
-            printf("\tError del sistema.\n");
-        break;
-        }
-    }
+    aciertodib=0;
+    
     printf("\tBienvenido a la prueba de Dibujo, aqui tendras que resolver la sopa de letras para conseguir la llave.\n");
-    printf("\tPara resolver la sopa de letras, tendrás que introducir que la palabra que corresponde con la definicion\t");
+    printf("\tPara resolver la sopa de letras, tendras que introducir que la palabra que corresponde con la definicion\n");
     printf("\tPrimero me tendras que indicar que numero vas a introducir y  luego introducir la palabra.\n");
 
     if(modo == 3)
@@ -71,11 +35,35 @@ int pruebaDibujo(int modo)
             printf("\tIndicame el numero para introducir la palabra que se desea.\n");
             scanf("%d", &numerodib);
             printf("Ahora introduce la palabra que has encontrado.\n");
-            scanf("%s", palabra);
-            printf("%s", palabra);
-            if(palabra != palabrasol)
+            scanf("%30s", palabra);
+            longitud = strlen(palabra);
+            for(i=0; i<longitud; i++)
+            {
+                if((palabra[i]>64)&&(palabra[i]<91))
+                {
+                    palabra[i]=palabra[i]+32;
+                }
+            }
+            c=comprueba(n1, numerodib, palabra);
+            printf("c=%d", c);
+            if(c==1)
+            {
+                printf("\tPalabra correcta.\n");
+                aciertodib++;
+            }
+            else
             {
                 fallodib++;
+                if(fallodib == 10)
+                {
+                    printf("\tHas perdido.\n");
+                    break;
+                }
+            }
+            if(aciertodib == 10)
+            {
+                printf("\tHas pasado la prueba.\n");
+                pruebaDibujo=1;
             }
         }
     }
@@ -91,7 +79,36 @@ int pruebaDibujo(int modo)
             printf("\tIndicame el numero para introducir la palabra que se desea.\n");
             scanf("%d", &numerodib);
             printf("Ahora introduce la palabra que has encontrado.\n");
-//            scanf("%s", sopaletras[numerodib]);
+            scanf("%30s", palabra);
+            longitud = strlen(palabra);
+            for(i=0; i<longitud; i++)
+            {
+                if((palabra[i]>64)&&(palabra[i]<91))
+                {
+                    palabra[i]=palabra[i]+32;
+                }
+            }
+            c=comprueba(n1, numerodib, palabra);
+            printf("c=%d", c);
+            if(c==1)
+            {
+                printf("\tPalabra correcta.\n");
+                aciertodib++;
+            }
+            else
+            {
+                fallodib++;
+                if(fallodib == 10)
+                {
+                    printf("\tHas perdido.\n");
+                    break;
+                }
+            }
+            if(aciertodib == 10)
+            {
+                printf("\tHas pasado la prueba.\n");
+                pruebaDibujo=1;
+            }
         }
     }
     else if(modo == 1)
@@ -106,9 +123,40 @@ int pruebaDibujo(int modo)
             printf("\tIndicame el numero para introducir la palabra que se desea.\n");
             scanf("%d", &numerodib);
             printf("Ahora introduce la palabra que has encontrado.\n");
-//            scanf("%s", sopaletra[numerodib]);
+            scanf("%30s", palabra);
+            longitud = strlen(palabra);
+            for(i=0; i<longitud; i++)
+            {
+                if((palabra[i]>64)&&(palabra[i]<91))
+                {
+                    palabra[i]=palabra[i]+32;
+                }
+            }
+            c=comprueba(n1, numerodib, palabra);
+            printf("c=%d", c);
+            if(c==1)
+            {
+                printf("\tPalabra correcta.\n");
+                aciertodib++;
+            }
+            else
+            {
+                fallodib++;
+                if(fallodib == 10)
+                {
+                    printf("\tHas perdido.\n");
+                    break;
+                }
+            }
+            if(aciertodib == 10)
+            {
+                printf("\tHas pasado la prueba.\n");
+                pruebaDibujo=1;
+            }
         }
     }
+    pf=fopen("Misdatos.txt", "a");
+    fprintf(pf, "p3 = %d", pruebaDibujo);
     return pruebaDibujo;
 }
 
@@ -179,7 +227,6 @@ void crucigrama(int n)
 
 void dibujo(int n)
 {
-    n=1;
     if(n == 1)
     {
         printf("   1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17\n");
@@ -303,4 +350,200 @@ void dibujo(int n)
         printf("16 L  E  G  O  Y  I  R  W  E  D  N  P  E  R  R  Y  S  J\n");
         printf("   --------------------------------------------------\n");
     }
+}
+
+int comprueba(int n, int numerodib, char const *word)
+{
+    int comprueba, i=0;
+    char palabrasol[30], k[30];
+    int N;
+    if(n == 1)
+    {
+        switch(numerodib)
+        {
+        case 1:
+            strcpy(k, "normalizacion");
+            strcpy(palabrasol, k);
+            N=13;
+        break;
+        case 2:
+            strcpy(k, "perpendicular");
+            strcpy(palabrasol, k);
+            N=13;
+        break;
+        case 3:
+            strcpy(k, "alzado");
+            strcpy(palabrasol, k);
+            N=6;
+        break;
+        case 4:
+            strcpy(k, "perfil");
+            strcpy(palabrasol, k);
+            N=6;
+        break;
+        case 5:
+            strcpy(k, "tangente");
+            strcpy(palabrasol, k);
+            N=8;
+        break;
+        case 6:
+            strcpy(k, "bisectriz");
+            strcpy(palabrasol, k);
+            N=9;
+        break;
+        case 7:
+            strcpy(k, "capaz");
+            strcpy(palabrasol, k);
+            N=5;
+        break;
+        case 8:
+            strcpy(k, "cotas");
+            strcpy(palabrasol, k);
+            N=5;
+        break;
+        case 9:
+            strcpy(k, "planta");
+            strcpy(palabrasol, k);
+            N=6;
+        break;
+        case 10:
+            strcpy(k, "paralelo");
+            strcpy(palabrasol, k);
+            N=8;
+        break;
+        default:
+            printf("\tError del sistema.\n");
+        break;
+        }
+    }
+    else if(n == 2)
+    {
+        switch(numerodib)
+        {
+        case 1:
+            strcpy(k, "isometrico");
+            strcpy(palabrasol, k);
+            N=10;
+        break;
+        case 2:
+            strcpy(k, "vertice");
+            strcpy(palabrasol, k);
+            N=7;
+        break;
+        case 3:
+            strcpy(k, "caballera");
+            strcpy(palabrasol, k);
+            N=9;
+        break;
+        case 4:
+            strcpy(k, "angulo");
+            strcpy(palabrasol, k);
+            N=6;
+        break;
+        case 5:
+            strcpy(k, "corte");
+            strcpy(palabrasol, k);
+            N=5;
+        break;
+        case 6:
+            strcpy(k, "segmento");
+            strcpy(palabrasol, k);
+            N=8;
+        break;
+        case 7:
+            strcpy(k, "escala");
+            strcpy(palabrasol, k);
+            N=6;
+        break;
+        case 8:
+            strcpy(k, "interseccion");
+            strcpy(palabrasol, k);
+            N=12;
+        break;
+        case 9:
+            strcpy(k, "eje");
+            strcpy(palabrasol, k);
+            N=3;
+        break;
+        case 10:
+            strcpy(k, "mediatriz");
+            strcpy(palabrasol, k);
+            N=9;
+        break;
+        default:
+            printf("\tError del sistema.\n");
+        break;
+        }
+    }
+    else if(n == 3)
+    {
+        switch(numerodib)
+        {
+        case 1:
+            strcpy(k, "centro");
+            strcpy(palabrasol, k);
+            N=6;
+        break;
+        case 2:
+            strcpy(k, "plano");
+            strcpy(palabrasol, k);
+            N=5;
+        break;
+        case 3:
+            strcpy(k, "autocad");
+            strcpy(palabrasol, k);
+            N=7;
+        break;
+        case 4:
+            strcpy(k, "piramide");
+            strcpy(palabrasol, k);
+            N=8;
+        break;
+        case 5:
+            strcpy(k, "secante");
+            strcpy(palabrasol, k);
+            N=7;
+        break;
+        case 6:
+            strcpy(k, "pendiente");
+            strcpy(palabrasol, k);
+            N=9;
+        break;
+        case 7:
+            strcpy(k, "diametro");
+            strcpy(palabrasol, k);
+            N=8;
+        break;
+        case 8:
+            strcpy(k, "generatriz");
+            strcpy(palabrasol, k);
+            N=10;
+        break;
+        case 9:
+            strcpy(k, "compas");
+            strcpy(palabrasol, k);
+            N=6;
+        break;
+        case 10:
+            strcpy(k, "recto");
+            strcpy(palabrasol, k);
+            N=5;
+        break;
+        default:
+            printf("\tError del sistema.\n");
+        break;
+        }
+    }
+    for(i=0; i<N; i++)
+    {
+        if(word[i] == palabrasol[i])
+        {
+            comprueba=1;
+        }
+        else
+        {
+            comprueba=0;
+        }
+    }
+    return comprueba;
 }
