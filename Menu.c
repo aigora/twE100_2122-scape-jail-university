@@ -101,11 +101,18 @@ void menu(int modo)
             }
         }
         while(b != 49);
-
-//        FILE *pf;
-//        pf("Misdatos.txt", "w");
-
         system("cls");
     }
+    i=0;
+    FILE *pf;
+    pf=fopen("Misdatos.txt", "w");
+    fprintf(pf, "Nombre del equipo: %s\n", equipo);
+    for(i=0; i<n; i++)
+    {
+        fprintf(pf, "Jugador %d:\nNombre: %s\nApellido 1: %s\nApellido 2: %s\nEdad: %d\nEst/Tra: %c\n", i+1, jugador[i].nombre, jugador[i].apellido1, jugador[i].apellido2, jugador[i].edad, jugador[i].work);
+    }
+    fclose(pf);
+    
+    system("cls");
     printf("\n");
 }
