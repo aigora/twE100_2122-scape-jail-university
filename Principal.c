@@ -7,7 +7,7 @@ int pruebaFisica(int modo);
 int pruebaMates(int modo);
 int pruebaDibujo(int modo);
 int pruebaBiologia(int modo);
-int pruebaRecreo(int modo);
+int pruebaFabricacion(int modo);
 int mapa(char op);
 
 int main()
@@ -127,7 +127,7 @@ int main()
                                         p4=pruebaBates(modo);
                                     }
                                 }
-                                while((resp == 'S')||(resp == 's'));
+                                while(((resp == 'S')||(resp == 's'))&&(p4 == 0));
                               }
                           }
                         
@@ -303,30 +303,56 @@ int main()
                             }
                         }
 
-//                        p4=pruebaBiologia(modo);
-//
-//                        if(p4==1)
-//                        {
-//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//                        }
-//                        else
-//                        {
-//                            printf("\tHas fallado.\n");
-//                        }
+                        if(p4 == 0)
+                        {
+                            p4=pruebaBiologia(modo);
+
+                            if(p4==1)
+                            {
+                                printf("\tHas obtenido la llave de la prueba de biologia.\n");
+                            }
+                            else
+                            {
+                                do
+                                {
+                                    printf("\tHas fallado.\n");
+                                    printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                    scanf(" %c", &resp);
+                                    if((resp == 'S')||(resp == 's'))
+                                    {
+                                        p4=pruebaBates(modo);
+                                    }
+                                }
+                                while(((resp == 'S')||(resp == 's'))&&(p4 == 0));
+                              }
+                          }
                     }
                 break;
                 case 3:
                     {
-//                       p4=pruebaBiologia(modo);
-//
-//                       if(p4==1)
-//                        {
-//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//                        }
-//                        else
-//                        {
-//                            printf("\tHas fallado.\n");
-//                        }
+                        if(p4 == 0)
+                        {
+                            p4=pruebaBiologia(modo);
+
+                            if(p4==1)
+                            {
+                                printf("\tHas obtenido la llave de la prueba de biologia.\n");
+                            }
+                            else
+                            {
+                                do
+                                {
+                                    printf("\tHas fallado.\n");
+                                    printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                    scanf(" %c", &resp);
+                                    if((resp == 'S')||(resp == 's'))
+                                    {
+                                        p4=pruebaBates(modo);
+                                    }
+                                }
+                                while(((resp == 'S')||(resp == 's'))&&(p4 == 0));
+                              }
+                          }
 
                        if(p2 == 0)
                         {
@@ -507,17 +533,29 @@ int main()
                 }
             }
 
-//            p4=pruebaBiologia(modo);
-//
-//            if(p4==1)
-//            {
-//                printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//            }
-//            else
-//            {
-//                printf("\tHas fallado.\n");
-//            }
-//
+                        if(p4 == 0)
+                        {
+                            p4=pruebaBiologia(modo);
+
+                            if(p4==1)
+                            {
+                                printf("\tHas obtenido la llave de la prueba de biologia.\n");
+                            }
+                            else
+                            {
+                                do
+                                {
+                                    printf("\tHas fallado.\n");
+                                    printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                    scanf(" %c", &resp);
+                                    if((resp == 'S')||(resp == 's'))
+                                    {
+                                        p4=pruebaBates(modo);
+                                    }
+                                }
+                                while(((resp == 'S')||(resp == 's'))&&(p4 == 0));
+                              }
+                          }
                     if(p5 == 0)
                         {
                             p5=pruebaRecreo(modo);
