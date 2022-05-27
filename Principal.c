@@ -74,7 +74,7 @@ int main()
             while((seguridad != 49)&&(seguridad != 50));
             if(seguridad == 49)
             {
-                n1=((double)rand()/RAND_MAX)*(3-1)+1;
+                n1=((double)rand()/RAND_MAX)*(4-1)+1;
                 switch(n1)
                 {
                 case 1:
@@ -102,18 +102,30 @@ int main()
                                 while((resp == 'S')||(resp == 's'));
                               }
                           }
+                        if(p4 == 0)
+                        {
+                            p4=pruebaBiologia(modo);
 
-//                        p4=pruebaBiologia(modo);
-//
-//                        if(p4==1)
-//                        {
-//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//                        }
-//                        else
-//                        {
-//                            printf("\tHas fallado.\n");
-//                        }
-//
+                            if(p4==1)
+                            {
+                                printf("\tHas obtenido la llave de la prueba de biologia.\n");
+                            }
+                            else
+                            {
+                                do
+                                {
+                                    printf("\tHas fallado.\n");
+                                    printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                    scanf(" %c", &resp);
+                                    if((resp == 'S')||(resp == 's'))
+                                    {
+                                        p4=pruebaBates(modo);
+                                    }
+                                }
+                                while((resp == 'S')||(resp == 's'));
+                              }
+                          }
+                        
 //                        p6=pruebaFabricacion;
 //
 //                        if(p6==1)
