@@ -364,5 +364,6 @@ float fuerza (float masa2, float aceleracion)
     float fuerza;
     masa2=3.5;
     aceleracion=(18*1000)/3600;
+    fuerza=masa2*aceleracion;
     return fuerza;
 }
