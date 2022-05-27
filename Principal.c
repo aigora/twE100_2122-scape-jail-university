@@ -8,14 +8,13 @@ int pruebaMates(int modo);
 int pruebaDibujo(int modo);
 int pruebaBiologia(int modo);
 int pruebaRecreo(int modo);
-int mapa(char op);
 
 int main()
 {
     int p1, p2, p3, p4, p5, p6, modo, save=0, n1, n, op;
     char partida, random, seguridad, resp;
     FILE *pf;
-//    n=mapa(op);
+
 
     do
     {
