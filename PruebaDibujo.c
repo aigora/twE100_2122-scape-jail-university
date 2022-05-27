@@ -37,6 +37,7 @@ int pruebaDibujo(int modo)
             scanf("%d", &numerodib);
             printf("Ahora introduce la palabra que has encontrado.\n");
             scanf("%30s", palabra);
+            system("cls");
             longitud = strlen(palabra);
             for(i=0; i<longitud; i++)
             {
@@ -81,6 +82,7 @@ int pruebaDibujo(int modo)
             scanf("%d", &numerodib);
             printf("Ahora introduce la palabra que has encontrado.\n");
             scanf("%30s", palabra);
+            system("cls");
             longitud = strlen(palabra);
             for(i=0; i<longitud; i++)
             {
@@ -125,6 +127,7 @@ int pruebaDibujo(int modo)
             scanf("%d", &numerodib);
             printf("Ahora introduce la palabra que has encontrado.\n");
             scanf("%30s", palabra);
+            system("cls");
             longitud = strlen(palabra);
             for(i=0; i<longitud; i++)
             {
