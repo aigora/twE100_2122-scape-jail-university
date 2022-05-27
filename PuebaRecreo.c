@@ -1,20 +1,34 @@
 #include <stdio.h>
+#include <windows.h>
+#include <time.h>
+#include <stdlib.h>
 
-int casillero(int fila, int columna);
+int n2;
+
+int casillero(int fila, int columna, int A);
 void numeroscasillero(int[5][5], int x, int y);
 
 int pruebaRecreo(int modo)
 {
+    int n1;
+    srand(time(NULL));
+    n1=((double)rand()/RAND_MAX)*(4-1)+1;
+    n2=((double)rand()/RAND_MAX)*(4-1)+1;
+
     int pruebaRecreo;
     int barcos=7;
-    int i=0, valor=0;
-    int t[5][5];
+    int i, valor=0;
+    int t[5][5]={{0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0},
+                    {0, 0, 0, 0, 0}};;
     char intro;
-    int fila, columna, intentos, a, b, s, l;
+    int fila, columna, intentos;
 
     printf("'H U N D I R  L A  F L O T A'\n\n");
-//    printf(" Pulse intro para continuar.\n\n");
-//    scanf(" %c",&intro);
+    //printf(" Pulse intro para continuar.\n\n");
+    //scanf(" %c",&intro);
     printf(" Durante esta prueba,\n debera averiguar en que casillas\n se encuntran los barcos.\n\n");
     printf(" Cada barco ocupa solamente una casilla, y hay un total de 7.\n\n\n ");
     printf("Tienes un numero de intentos por partida,\n cuantos menos intentos, mas grande sera el premio si gana.\n");
@@ -22,7 +36,6 @@ int pruebaRecreo(int modo)
     if(modo == 1)
     {
         intentos=20;
-//        printf()
     }
     else if(modo == 2)
     {
@@ -33,36 +46,40 @@ int pruebaRecreo(int modo)
         intentos=10;
     }
 
-//    numeroscasillero(t, 5, 5);
-      ;
+
       switch (intentos)
             {
         case 10 :
-              printf(" Tiene 10 intentos\n");
+              i=10;
+              printf("\n Te quedan %d intentos\n",i);
               numeroscasillero(t, 5, 5);
-              while(i!=10&&barcos!=0)
+              while(i!=0&&barcos!=0)
               {
-                  int i=1;
                   do
                   {
-                       printf("\tfila(del 1 al 5): ");
-                       scanf("%i", &fila);
+                      do
+                      {
+                           printf("\tfila(del 1 al 5): ");
+                           scanf("%i", &fila);
+                      }
+                      while ((fila!=1) && (fila!=2) && (fila!=3) && (fila!=4) && (fila!=5));
+                      do
+                      {
+                          printf("\tcolumna(del 1 al 5): ");
+                          scanf("%i", &columna);
+                      }
+                      while ((columna!=1) && (columna!=2) && (columna!=3) && (columna!=4) && (columna!=5));
+
+                          printf("\n\nHa escogido la casilla %i,%i\n\n", fila, columna);
+                          fila=fila-1;
+                          columna=columna-1;
+                    if(t[fila][columna]!=0)
+                     printf("Ya has elegido esta casilla, intentalo de nuevo.\n\n");
                   }
-                  while ((fila!=1) && (fila!=2) && (fila!=3) && (fila!=4) && (fila!=5)&&(fila!=0));
-                  do
-                  {
-                      printf("\tcolumna(del 1 al 5): ");
-                      scanf("%i", &columna);
-                  }
-                  while ((columna!=1) && (columna!=2) && (columna!=3) && (columna!=4) && (columna!=5)&&(columna!=0));
-                  //printf("\n\nHa escogido la casilla %i,%i\n\n", fila, columna);
-//                  if((fila != 0)&&(columna != 0))
-//                  {
-                      fila=fila-1;
-                      columna=columna-1;
+                  while(t[fila][columna]!=0);
 
                       numeroscasillero(t, fila, columna);
-                      valor=casillero(fila, columna);
+                      valor=casillero(fila, columna, n2);
                       if(valor == 1)
                       {
                           printf("\tHas tumbado un  barco\n");
@@ -76,107 +93,122 @@ int pruebaRecreo(int modo)
                       if (barcos==0)
                       {
                           printf("\nPRUEBA SEPARADA");
-                      }
-                  //}
-//                  else
-//                  {
-//                      printf("Prueba terminada");
-                      if (barcos==0)
-                      {
                           pruebaRecreo=1;
                       }
-                 // }
-
-                i=i+1;
+                i=i-1;
+                if(i==0)
+                    printf("Has perdido, viejo...  :%c\n",'(');
+                else
+                printf("\n\tTe quedan %d intentos\n\n",i);
                 }
               break;
         case 15 :
-               printf(" Tiene 15 intentos\n");
-               numeroscasillero(t, 5, 5);
-             while(i!=15&&barcos!=0)
+              i=15;
+              printf("\n Te quedan %d intentos\n",i);
+              numeroscasillero(t, 5, 5);
+              while(i!=0&&barcos!=0)
               {
-               int i=1;
-               //for(i=0; i<15; i++)
-              {
-               do
-               {
-                printf("\tfila(del 1 al 5): ");
-                scanf("%i",&fila);
-               }
-               while (fila!=1 && fila!=2 && fila!=3 && fila!=4 && fila!=5);
-               do
-               {
-               printf("\tcolumna(del 1 al 5): ");
-               scanf("%i",&columna);
-               }
-               while (columna!=1 && columna!=2 && columna!=3 && columna!=4 && columna!=5);
-               printf("\ncasilla %i,%i\n\n", fila, columna);
-               fila=fila-1;
-                  columna=columna-1;
+                  do
+                  {
+                      do
+                      {
+                           printf("\tfila(del 1 al 5): ");
+                           scanf("%i", &fila);
+                      }
+                      while ((fila!=1) && (fila!=2) && (fila!=3) && (fila!=4) && (fila!=5));
+                      do
+                      {
+                          printf("\tcolumna(del 1 al 5): ");
+                          scanf("%i", &columna);
+                      }
+                      while ((columna!=1) && (columna!=2) && (columna!=3) && (columna!=4) && (columna!=5));
 
-                  numeroscasillero(t, fila, columna);
-                  valor=casillero(fila, columna);
-                  if(valor == 1)
-                  {
-                      printf("\tHas tumbado un  barco\n");
-                      barcos=barcos-1;
-                      printf("\tTe quedan %d barcos", barcos);
+                          printf("\n\nHa escogido la casilla %i,%i\n\n", fila, columna);
+                          fila=fila-1;
+                          columna=columna-1;
+                    if(t[fila][columna]!=0)
+                     printf("Ya has elegido esta casilla, intentalo de nuevo.\n\n");
                   }
-                  else
-                  {
-                      printf("\tAGUA = H2O.\n");
-                  }
-                  if (barcos==0)
-                  {
-                      printf("\nPRUEBA SEPARADA");
-                  }
-              }i=i+1;
-            }
+                  while(t[fila][columna]!=0);
+
+                      numeroscasillero(t, fila, columna);
+                      valor=casillero(fila, columna,n2);
+                      if(valor == 1)
+                      {
+                          printf("\tHas tumbado un  barco\n");
+                          barcos=barcos-1;
+                          printf("\tTe quedan %d barcos", barcos);
+                      }
+                      else
+                      {
+                          printf("\tAGUA = H2O.\n");
+                      }
+                      if (barcos==0)
+                      {
+                          printf("\nPRUEBA SEPARADA");
+                          pruebaRecreo=1;
+                      }
+                i=i-1;
+                if(i==0)
+                    printf("Has perdido, viejo...  :%c\n",'(');
+                else
+                printf("\n\tTe quedan %d intentos\n\n",i);
+                }
               break;
         case 20 :
-           printf(" Tiene 20 intentos\n");
-             numeroscasillero(t, 5, 5);
-            while(i!=20&&barcos!=0)
-            { int i=1;
-                //for(i=0; i<20; i++)
-            {
-             do
+              i=20;
+              printf("\n Te quedan %d intentos\n",i);
+              numeroscasillero(t, 5, 5);
+              while(i!=0&&barcos!=0)
               {
-               printf("\tfila(del 1 al 5): ");
-               scanf("%i",&fila);
-              }
-              while (fila!=1 && fila!=2 && fila!=3 && fila!=4 && fila!=5);
-             do
-             {
-             printf("\tcolumna(del 1 al 5): ");
-             scanf("%i",&columna);
-             }
-             while (columna!=1 && columna!=2 && columna!=3 && columna!=4 && columna!=5);
-             printf("\ncasilla %i,%i\n", fila, columna);
-             fila=fila-1;
-                  columna=columna-1;
+                  do
+                  {
+                      do
+                      {
+                           printf("\tfila(del 1 al 5): ");
+                           scanf("%i", &fila);
+                      }
+                      while ((fila!=1) && (fila!=2) && (fila!=3) && (fila!=4) && (fila!=5));
+                      do
+                      {
+                          printf("\tcolumna(del 1 al 5): ");
+                          scanf("%i", &columna);
+                      }
+                      while ((columna!=1) && (columna!=2) && (columna!=3) && (columna!=4) && (columna!=5));
 
-                  numeroscasillero(t, fila, columna);
-                  valor=casillero(fila, columna);
-                  if(valor == 1)
-                  {
-                      printf("\tHas tumbado un  barco\n");
-                      barcos=barcos-1;
-                      printf("\tTe quedan %d barcos", barcos);
+                          printf("\n\nHa escogido la casilla %i,%i\n\n", fila, columna);
+                          fila=fila-1;
+                          columna=columna-1;
+                    if(t[fila][columna]!=0)
+                     printf("Ya has elegido esta casilla, intentalo de nuevo.\n\n");
                   }
-                  else
-                  {
-                      printf("\tAGUA = H2O.\n");
-                  }
-                  if (barcos==0)
-                  {
-                      printf("\nPRUEBA SEPARADA");
-                  }
-            } i=i+1;
+                  while(t[fila][columna]!=0);
+
+                      numeroscasillero(t, fila, columna);
+                      valor=casillero(fila, columna,n2);
+                      if(valor == 1)
+                      {
+                          printf("\tHas tumbado un  barco\n");
+                          barcos=barcos-1;
+                          printf("\tTe quedan %d barcos", barcos);
+                      }
+                      else
+                      {
+                          printf("\tAGUA = H2O.\n");
+                      }
+                      if (barcos==0)
+                      {
+                          printf("\nPRUEBA SEPARADA");
+                          pruebaRecreo=1;
+                      }
+                i=i-1;
+                if(i==0)
+                    printf("Has perdido, viejo...  :%c\n",'(');
+                else
+                printf("\n\tTe quedan %d intentos\n\n",i);
+                }
+              break;
             }
-           break;
-            }
-//            pruebaRecreo=1;
     return pruebaRecreo;
  }
 
@@ -184,28 +216,70 @@ int pruebaRecreo(int modo)
 
 void numeroscasillero(int t[5][5], int x, int y)
 {
+    int xx,yy;
     printf("\t1 \t2 \t3 \t4 \t5\n");
-    for(x=0; x<5; x++)
+    for(xx=0; xx<5; xx++)
     {
         printf("------------------------------------------\n");
-        for(y=0; y<5; y++)
+        for(yy=0; yy<5; yy++)
         {
-           t[x][y]=0;
-           printf("\t%d|", t[x][y]);
+           if(t[xx][yy]==0)
+           {
+               if(xx==x&&yy==y)
+               {
+                    if(casillero(x,y,n2)==1)
+                        {
+                            t[xx][yy]= 'X';
+                            printf("\t%c|",t[xx][yy]);
+                        }
+                    else
+                        {
+                            t[xx][yy]= '_';
+                            printf("\t%c|",t[xx][yy]);
+                        }
+               }
+               else
+                   printf("\t%d|", t[xx][yy]);
+           }
+           else
+               printf("\t%c|", t[xx][yy]);
         }
         printf("\n");
     }
+
+
 }
 
-int casillero(int fila, int columna)
+int casillero(int fila, int columna,int A)
 {
     int casillero;
-    int t [5][5];
-    int tsol[5][5]={{8, 0, 0, 0, 0},
+    int tsol[5][5];
+    switch (A)
+    {
+       case 1:
+             tsol ={{8, 0, 0, 0, 0},
                     {0, 0, 8, 0, 0},
                     {0, 8, 0, 0, 8},
                     {0, 8, 0, 0, 8},
                     {0, 8, 0, 0, 0}};
+        break;
+       case 2:
+            tsol[5][5]={
+                        {0, 0, 0, 0, 0},
+                        {8, 0, 0, 8, 0},
+                        {0, 0, 0, 8, 0},
+                        {0, 0, 0, 8, 0},
+                        {8, 8, 0, 8, 0}};
+        break;
+       case 3:
+           tsol[5][5]={
+                        {0, 8, 0, 8, 8},
+                        {0, 0, 8, 0, 0},
+                        {0, 8, 8, 0, 0},
+                        {0, 0, 0, 0, 0},
+                        {0, 0, 8, 0, 0}};
+        break;
+    }
 
     if(tsol[fila][columna] == 8)
     {
