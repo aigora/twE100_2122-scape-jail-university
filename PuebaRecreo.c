@@ -3,14 +3,12 @@
 #include <time.h>
 #include <stdlib.h>
 
-int n2;
-
 int casillero(int fila, int columna, int A);
 void numeroscasillero(int[5][5], int x, int y);
 
 int pruebaRecreo(int modo)
 {
-    int n1;
+    int n1, n2;
     srand(time(NULL));
     n1=((double)rand()/RAND_MAX)*(4-1)+1;
     n2=((double)rand()/RAND_MAX)*(4-1)+1;
