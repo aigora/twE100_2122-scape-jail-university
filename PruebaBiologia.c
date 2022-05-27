@@ -1,14 +1,15 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <windows.h>
 
-int pruebabiologia;
 
 void ahorcado(int a);
 void ahorcadodif(int a);
 
 int pruebaBiologia(int modo)
 {
+    int pruebabiologia;
     int n1,n2;
     srand(time(NULL));
     n1=((double)rand()/RAND_MAX)*(4-1)+1;
@@ -74,6 +75,8 @@ switch (modo)
                         ahorcado(b);
                         letras[c]=letra;
                         c=c+1;
+                        if (b==8)
+                        pruebabiologia=0;
                     }
                     a=0;
                     }
@@ -129,6 +132,8 @@ switch (modo)
                         ahorcado(b);
                         letras[c]=letra;
                         c=c+1;
+                        if (b==8)
+                        pruebabiologia=0;
                     }
                     a=0;
                     }
@@ -184,6 +189,8 @@ switch (modo)
                         ahorcado(b);
                         letras[c]=letra;
                         c=c+1;
+                        if (b==8)
+                        pruebabiologia=0;
                     }
                     a=0;
                     }
@@ -252,6 +259,8 @@ switch (modo)
                         ahorcado(bm);
                         letrasm[cm]=letram;
                         cm=cm+1;
+                        if (bm==8)
+                        pruebabiologia=0;
                     }
                     am=0;
                     }
@@ -307,6 +316,8 @@ switch (modo)
                         ahorcado(bm);
                         letrasm[cm]=letram;
                         cm=cm+1;
+                        if (bm==8)
+                        pruebabiologia=0;
                     }
                     am=0;
                     }
@@ -362,6 +373,8 @@ switch (modo)
                         ahorcado(bm);
                         letrasm[cm]=letram;
                         cm=cm+1;
+                        if (bm==8)
+                        pruebabiologia=0;
                     }
                     am=0;
                     }
@@ -430,6 +443,8 @@ switch (modo)
                         ahorcadodif(bd);
                         letrasd[cd]=letrad;
                         cd=cd+1;
+                        if (bd==4)
+                        pruebabiologia=0;
                     }
                     ad=0;
                     }
@@ -485,6 +500,8 @@ switch (modo)
                         ahorcadodif(bd);
                         letrasd[cd]=letrad;
                         cd=cd+1;
+                        if (bd==4)
+                        pruebabiologia=0;
                     }
                     ad=0;
                     }
@@ -540,6 +557,8 @@ switch (modo)
                         ahorcadodif(bd);
                         letrasd[cd]=letrad;
                         cd=cd+1;
+                        if (bd==4)
+                        pruebabiologia=0;
                     }
                     ad=0;
                     }
@@ -617,7 +636,6 @@ void ahorcado(int a)
     printf("  -|-\n");
     printf("  | |\n");
     printf("YOU DIED!");
-    pruebabiologia=0;
     break;
     }
 
@@ -655,7 +673,6 @@ void ahorcadodif(int a)
     printf("  -|-\n");
     printf("  | |\n");
     printf("YOU DIED!");
-    pruebabiologia=0;
     break;
     }
 
