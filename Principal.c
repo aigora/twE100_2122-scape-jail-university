@@ -7,7 +7,6 @@ int pruebaFisica(int modo);
 int pruebaMates(int modo);
 int pruebaDibujo(int modo);
 int pruebaBiologia(int modo);
-int pruebaQuimica(int modo);
 int pruebaFabricacion(int modo);
 int mapa(char op);
 
@@ -132,16 +131,29 @@ int main()
                               }
                           }
                         
-//                        p6=pruebaFabricacion;
-//
-//                        if(p6==1)
-//                        {
-//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//                        }
-//                        else
-//                        {
-//                            printf("\tHas fallado.\n");
-//                        }
+                            if(p5 == 0)
+                        {
+                            p5=pruebaRecreo(modo);
+
+                            if(p5==1)
+                            {
+                                printf("\tHas obtenido la llave de la prueba de recreo.\n");
+                            }
+                            else
+                            {
+                                do
+                                {
+                                    printf("\tHas fallado.\n");
+                                    printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                    scanf(" %c", &resp);
+                                    if((resp == 'S')||(resp == 's'))
+                                    {
+                                        p5=pruebaRecreo(modo);
+                                    }
+                                }
+                                while(((resp == 'S')||(resp == 's'))&&(p5 == 0));
+                            }
+                        }
 
                         if(p1 == 0)
                         {
@@ -190,17 +202,6 @@ int main()
                                 while(((resp == 'S')||(resp == 's'))&&(p3 == 0));
                             }
                         }
-
-//                        p5=pruebaQuimica(modo);
-//
-//                        if(p5==1)
-//                        {
-//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//                        }
-//                        else
-//                        {
-//                            printf("\tHas fallado.\n");
-//                        }
                     }
                 break;
                 case 2:
@@ -229,16 +230,30 @@ int main()
                             }
                         }
 
-//                        p6=pruebaFabricacion;
-//
-//                        if(p6==1)
-//                        {
-//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//                        }
-//                        else
-//                        {
-//                            printf("\tHas fallado.\n");
-//                        }
+                       if(p5 == 0)
+                        {
+                            p5=pruebaRecreo(modo);
+
+                            if(p5==1)
+                            {
+                                printf("\tHas obtenido la llave de la prueba de recreo.\n");
+                            }
+                            else
+                            {
+                                do
+                                {
+                                    printf("\tHas fallado.\n");
+                                    printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                    scanf(" %c", &resp);
+                                    if((resp == 'S')||(resp == 's'))
+                                    {
+                                        p5=pruebaRecreo(modo);
+                                    }
+                                }
+                                while(((resp == 'S')||(resp == 's'))&&(p5 == 0));
+                            }
+                        }
+
 
                         if(p2 == 0)
                         {
@@ -263,17 +278,6 @@ int main()
                                 while(((resp == 'S')||(resp == 's'))&&(p2 == 0));
                               }
                           }
-
-//                        p5=pruebaQuimica(modo);
-//
-//                        if(p5==1)
-//                        {
-//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//                        }
-//                        else
-//                        {
-//                            printf("\tHas fallado.\n");
-//                        }
 
                         if(p1 == 0)
                         {
@@ -372,16 +376,30 @@ int main()
                             }
                         }
 
-//                        p6=pruebaFabricacion;
-//
-//                        if(p6==1)
-//                        {
-//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//                        }
-//                        else
-//                        {
-//                            printf("\tHas fallado.\n");
-//                        }
+                    if(p5 == 0)
+                        {
+                            p5=pruebaRecreo(modo);
+
+                            if(p5==1)
+                            {
+                                printf("\tHas obtenido la llave de la prueba de recreo.\n");
+                            }
+                            else
+                            {
+                                do
+                                {
+                                    printf("\tHas fallado.\n");
+                                    printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                    scanf(" %c", &resp);
+                                    if((resp == 'S')||(resp == 's'))
+                                    {
+                                        p5=pruebaRecreo(modo);
+                                    }
+                                }
+                                while(((resp == 'S')||(resp == 's'))&&(p5 == 0));
+                            }
+                        }
+
 
                         if(p1 == 0)
                         {
@@ -407,16 +425,6 @@ int main()
                             }
                         }
 
-//                        p5=pruebaQuimica(modo);
-//
-//                        if(p5==1)
-//                        {
-//                            printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//                        }
-//                        else
-//                        {
-//                            printf("\tHas fallado.\n");
-//                        }
                     }
                 break;
                 default:
@@ -510,27 +518,29 @@ int main()
 //                printf("\tHas fallado.\n");
 //            }
 //
-//            p5=pruebaQuimica(modo);
-//
-//            if(p5==1)
-//            {
-//                printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//            }
-//            else
-//            {
-//                printf("\tHas fallado.\n");
-//            }
-//
-//            p6=pruebaFabricacion;
-//
-//            if(p6==1)
-//            {
-//                printf("\tHas obtenido la llave de la prueba de dibujo.\n");
-//            }
-//            else
-//            {
-//                printf("\tHas fallado.\n");
-//            }
+                    if(p5 == 0)
+                        {
+                            p5=pruebaRecreo(modo);
+
+                            if(p5==1)
+                            {
+                                printf("\tHas obtenido la llave de la prueba de recreo.\n");
+                            }
+                            else
+                            {
+                                do
+                                {
+                                    printf("\tHas fallado.\n");
+                                    printf("\t¿Quieres volver a intentarlo?(S/N)\n");
+                                    scanf(" %c", &resp);
+                                    if((resp == 'S')||(resp == 's'))
+                                    {
+                                        p5=pruebaRecreo(modo);
+                                    }
+                                }
+                                while(((resp == 'S')||(resp == 's'))&&(p5 == 0));
+                            }
+                        }
 
         }
     }
