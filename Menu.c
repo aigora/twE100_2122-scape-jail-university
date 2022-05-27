@@ -29,13 +29,10 @@ void menu(int modo)
     }
     while(a != 49);
     system("cls");
-//    do
-//    {
+
         printf("\tDecirme cuantos integrantes sois.\n");
         scanf("%d", &n);
-//        if()
-//    }
-//    while();
+
     integrante jugador[n];
     for (i=0; i<n; i++)
     {
