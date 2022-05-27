@@ -88,9 +88,9 @@ int pruebaFisica(float modo)
         do
         {
             //Opciòn 2
-            printf("\tPrimera pregunta, ¿Cual tiene más velocidad un coche azul que va a 25 metros por segundo o otro rojo que va a 90 kilometros hora?.\n");
+            printf("\tPrimera pregunta, ¿Cual tiene mas velocidad un coche azul que va a 25 metros por segundo o otro rojo que va a 90 kilometros hora?.\n");
             printf("\tLas soluciones son:\n\t1)El coche azul.\n\t2)El coche rojo.\n\t3)Ninguna de las anteriores.\n");
-            printf("\tSolucin 1, 2 o 3.\n");
+            printf("\tSolucion 1, 2 o 3.\n");
             scanf("%d", &p1);
                 //Poner las opciones.
             switch (p1)
@@ -238,7 +238,7 @@ int pruebaFisica(float modo)
     case 3:
         {
             float masa2, aceleracion;
-            printf("\tSegunda pregunta: ¿Cual sera la fuerza a aplicar sobre un cuerpo de masa tres mil quinientos gramos y se lo queremos mover a dieciocho (km/h^2)");
+            printf("\tSegunda pregunta: ¿Cual sera la fuerza a aplicar sobre un cuerpo de masa tres mil quinientos gramos y se lo queremos mover a dieciocho (km/h^2)?\n");
             printf("\tLa solucion en Newtons.\n");
             scanf("%f", &p2);
             sol = fuerza (masa2, aceleracion);
