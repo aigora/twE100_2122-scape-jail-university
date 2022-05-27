@@ -14,20 +14,6 @@ int main()
     int p1, p2, p3, p4, p5, p6, modo, save=0, n1, n, op;
     char partida, random, seguridad, resp;
     FILE *pf;
-
-
-    do
-    {
-        printf("\tSelecciona una de estas opciones:\n\t1)Partida guardada.\n\t2)Partida nueva.\n");
-        printf("\tPulse en el numero.\n");
-        scanf(" %c", &partida);
-        if(partida==50)
-        {
-            printf("\tSi empiezas una partida nueva se borraran los datos de la anterior que tengas.\n");
-            printf("\tEstas seguro?(S/N)\n");
-            scanf(" %c", &resp);
-            if((resp == 'S')||(resp == 's'))
-            {
                 p1=0;
                 p2=0;
                 p3=0;
@@ -36,7 +22,7 @@ int main()
                 p6=0;
                 do
                 {
-                    printf("\tAhora elija el modo de juego, tiene tres modos de dificultad:\n");
+                    printf("\tElija el modo de juego, tiene tres modos de dificultad:\n");
                     printf("\t1)Facil.\n\t2)Medio.\n\t3)Dificil.\n");
                     printf("\tLe recuerdo que con cada modalidad tendra un tipo de pruebas, adapatadas al modo de partida que elija.\n");
                     scanf("%d", &modo);
@@ -48,19 +34,6 @@ int main()
             while((modo<1)||(modo>4));
             system("cls");
             menu(modo);
-            }
-            else
-            {
-                    pf=fopen("Misdatos.txt", "r");
-            }
-        }
-        else if(partida==49)
-        {
-                pf=fopen("Misdatos.txt", "r");
-
-        }
-    }
-    while((partida != 49)&&(partida != 50));
 
     do
     {
@@ -123,13 +96,13 @@ int main()
                                     scanf(" %c", &resp);
                                     if((resp == 'S')||(resp == 's'))
                                     {
-                                        p4=pruebaBates(modo);
+                                        p4=pruebaBiologia(modo);
                                     }
                                 }
                                 while(((resp == 'S')||(resp == 's'))&&(p4 == 0));
                               }
                           }
-                        
+
                             if(p5 == 0)
                         {
                             p5=pruebaRecreo(modo);
@@ -319,7 +292,7 @@ int main()
                                     scanf(" %c", &resp);
                                     if((resp == 'S')||(resp == 's'))
                                     {
-                                        p4=pruebaBates(modo);
+                                        p4=pruebaBiologia(modo);
                                     }
                                 }
                                 while(((resp == 'S')||(resp == 's'))&&(p4 == 0));
@@ -346,7 +319,7 @@ int main()
                                     scanf(" %c", &resp);
                                     if((resp == 'S')||(resp == 's'))
                                     {
-                                        p4=pruebaBates(modo);
+                                        p4=pruebaBiologia(modo);
                                     }
                                 }
                                 while(((resp == 'S')||(resp == 's'))&&(p4 == 0));
@@ -549,7 +522,7 @@ int main()
                                     scanf(" %c", &resp);
                                     if((resp == 'S')||(resp == 's'))
                                     {
-                                        p4=pruebaBates(modo);
+                                        p4=pruebaBiologia(modo);
                                     }
                                 }
                                 while(((resp == 'S')||(resp == 's'))&&(p4 == 0));
@@ -582,7 +555,7 @@ int main()
         }
     }
     while((random != 49)&&(random != 50));
-    
+
     if((p1 == 1)&&(p2 == 1)&&(p3 == 1)&&(p4 == 1)&&(p5 == 1)&&(p6 == 1))
     {
         printf("\tFelicidades has superado el scape room.\n");
