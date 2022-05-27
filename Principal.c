@@ -30,6 +30,12 @@ int main()
             scanf(" %c", &resp);
             if((resp == 'S')||(resp == 's'))
             {
+                p1=0;
+                p2=0;
+                p3=0;
+                p4=0;
+                p5=0;
+                p6=0;
                 do
                 {
                     printf("\tAhora elija el modo de juego, tiene tres modos de dificultad:\n");
@@ -52,7 +58,7 @@ int main()
         }
         else if(partida==49)
         {
-                printf("\tSeleccione la partida guardada.\n");
+                pf=fopen("Misdatos.txt", "r");
 
         }
     }
@@ -99,7 +105,7 @@ int main()
                                         p2=pruebaMates(modo);
                                     }
                                 }
-                                while((resp == 'S')||(resp == 's'));
+                                while(((resp == 'S')||(resp == 's'))&&(p2 == 0));
                               }
                           }
                         if(p4 == 0)
@@ -157,7 +163,7 @@ int main()
                                         p1=pruebaFisica(modo);
                                     }
                                 }
-                                while((resp == 'S')||(resp == 's'));
+                                while(((resp == 'S')||(resp == 's'))&&(p1 == 0));
                             }
                         }
 
@@ -181,7 +187,7 @@ int main()
                                         p3=pruebaDibujo(modo);
                                     }
                                 }
-                                while((resp == 'S')||(resp == 's'));
+                                while(((resp == 'S')||(resp == 's'))&&(p3 == 0));
                             }
                         }
 
@@ -219,7 +225,7 @@ int main()
                                         p3=pruebaDibujo(modo);
                                     }
                                 }
-                                while((resp == 'S')||(resp == 's'));
+                                while(((resp == 'S')||(resp == 's'))&&(p3 == 0));
                             }
                         }
 
@@ -254,7 +260,7 @@ int main()
                                         p2=pruebaMates(modo);
                                     }
                                 }
-                                while((resp == 'S')||(resp == 's'));
+                                while(((resp == 'S')||(resp == 's'))&&(p2 == 0));
                               }
                           }
 
@@ -289,7 +295,7 @@ int main()
                                         p1=pruebaFisica(modo);
                                     }
                                 }
-                                while((resp == 'S')||(resp == 's'));
+                                while(((resp == 'S')||(resp == 's'))&&(p1 == 0));
                             }
                         }
 
@@ -338,7 +344,7 @@ int main()
                                         p2=pruebaMates(modo);
                                     }
                                 }
-                                while((resp == 'S')||(resp == 's'));
+                                while(((resp == 'S')||(resp == 's'))&&(p2 == 0));
                               }
                           }
 
@@ -362,7 +368,7 @@ int main()
                                         p3=pruebaDibujo(modo);
                                     }
                                 }
-                                while((resp == 'S')||(resp == 's'));
+                                while(((resp == 'S')||(resp == 's'))&&(p3 == 0));
                             }
                         }
 
@@ -397,7 +403,7 @@ int main()
                                         p1=pruebaFisica(modo);
                                     }
                                 }
-                                while((resp == 'S')||(resp == 's'));
+                                while(((resp == 'S')||(resp == 's'))&&(p1 == 0));
                             }
                         }
 
@@ -441,7 +447,7 @@ int main()
                             p1=pruebaFisica(modo);
                         }
                     }
-                    while((resp == 'S')||(resp == 's'));
+                    while(((resp == 'S')||(resp == 's'))&&(p1 == 0));
                 }
             }
 
@@ -465,7 +471,7 @@ int main()
                             p2=pruebaMates(modo);
                         }
                     }
-                    while((resp == 'S')||(resp == 's'));
+                    while(((resp == 'S')||(resp == 's'))&&(p2 == 0));
                   }
               }
 
@@ -489,7 +495,7 @@ int main()
                             p3=pruebaDibujo(modo);
                         }
                     }
-                    while((resp == 'S')||(resp == 's'));
+                    while(((resp == 'S')||(resp == 's'))&&(p3 == 0));
                 }
             }
 
