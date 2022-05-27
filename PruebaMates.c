@@ -286,6 +286,7 @@ int pruebaMates(int modo)
                 columna=b-1;
                 printf("\tAhora deme el valor que desee introducir.\n");
                 scanf("%d", &i);
+                system("cls");
                 if(i != 0)
                 {
                     sudoku[fila][columna]=i;
@@ -330,6 +331,7 @@ int pruebaMates(int modo)
                 columna=b-1;
                 printf("\tAhora deme el valor que desee introducir.\n");
                 scanf("%d", &i);
+                system("cls");
                 if(i != 0)
                 {
                     sudoku[fila][columna]=i;
@@ -369,6 +371,11 @@ int pruebaMates(int modo)
                 scanf("%d", &a);
                 printf("\tValor de columna:\n");
                 scanf("%d", &b);
+                fila=a-1;
+                columna=b-1;
+                printf("\tAhora deme el valor que desee introducir.\n");
+                scanf("%d", &i);
+                system("cls");
                 if(i != 0)
                 {
                     sudoku[fila][columna]=i;
