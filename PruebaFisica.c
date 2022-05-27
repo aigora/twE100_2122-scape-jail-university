@@ -266,7 +266,7 @@ int pruebaFisica(float modo)
     case 1:
         {
             printf("\tTenemos este acertijo: 'Cuanto mas gorda esta mayor es el amor.'\n");
-            printf("\tEsto significa:\n\tA)Los protones siempre se acercan a los neutrones.\n\tB)A mayor volumen, mayor capacidad.\n\tC)Cuanto más peso, mayor fuerza de atraccion.\n");
+            printf("\tEsto significa:\n\tA)Los protones siempre se acercan a los neutrones.\n\tB)A mayor volumen, mayor capacidad.\n\tC)Cuanto mas peso, mayor fuerza de atraccion.\n");
             scanf(" %c", &letter);
             if ((letter == 67) || (letter == 99))
             {
