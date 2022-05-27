@@ -3,16 +3,11 @@
 #include <time.h>
 #include <stdlib.h>
 
-int casillero(int fila, int columna, int A);
+int casillero(int fila, int columna);
 void numeroscasillero(int[5][5], int x, int y);
 
 int pruebaRecreo(int modo)
 {
-    int n1, n2;
-    srand(time(NULL));
-    n1=((double)rand()/RAND_MAX)*(4-1)+1;
-    n2=((double)rand()/RAND_MAX)*(4-1)+1;
-
     int pruebaRecreo;
     int barcos=7;
     int i, valor=0;
@@ -25,8 +20,6 @@ int pruebaRecreo(int modo)
     int fila, columna, intentos;
 
     printf("'H U N D I R  L A  F L O T A'\n\n");
-    //printf(" Pulse intro para continuar.\n\n");
-    //scanf(" %c",&intro);
     printf(" Durante esta prueba,\n debera averiguar en que casillas\n se encuntran los barcos.\n\n");
     printf(" Cada barco ocupa solamente una casilla, y hay un total de 7.\n\n\n ");
     printf("Tienes un numero de intentos por partida,\n cuantos menos intentos, mas grande sera el premio si gana.\n");
@@ -77,7 +70,7 @@ int pruebaRecreo(int modo)
                   while(t[fila][columna]!=0);
 
                       numeroscasillero(t, fila, columna);
-                      valor=casillero(fila, columna, n2);
+                      valor=casillero(fila, columna);
                       if(valor == 1)
                       {
                           printf("\tHas tumbado un  barco\n");
@@ -130,7 +123,7 @@ int pruebaRecreo(int modo)
                   while(t[fila][columna]!=0);
 
                       numeroscasillero(t, fila, columna);
-                      valor=casillero(fila, columna,n2);
+                      valor=casillero(fila, columna);
                       if(valor == 1)
                       {
                           printf("\tHas tumbado un  barco\n");
@@ -183,7 +176,7 @@ int pruebaRecreo(int modo)
                   while(t[fila][columna]!=0);
 
                       numeroscasillero(t, fila, columna);
-                      valor=casillero(fila, columna,n2);
+                      valor=casillero(fila, columna);
                       if(valor == 1)
                       {
                           printf("\tHas tumbado un  barco\n");
@@ -225,7 +218,7 @@ void numeroscasillero(int t[5][5], int x, int y)
            {
                if(xx==x&&yy==y)
                {
-                    if(casillero(x,y,n2)==1)
+                    if(casillero(x,y)==1)
                         {
                             t[xx][yy]= 'X';
                             printf("\t%c|",t[xx][yy]);
@@ -248,36 +241,15 @@ void numeroscasillero(int t[5][5], int x, int y)
 
 }
 
-int casillero(int fila, int columna,int A)
+int casillero(int fila, int columna)
 {
     int casillero;
-    int tsol[5][5];
-    switch (A)
-    {
-       case 1:
-             tsol ={{8, 0, 0, 0, 0},
+    int t [5][5];
+    int tsol[5][5]={{8, 0, 0, 0, 0},
                     {0, 0, 8, 0, 0},
                     {0, 8, 0, 0, 8},
                     {0, 8, 0, 0, 8},
                     {0, 8, 0, 0, 0}};
-        break;
-       case 2:
-            tsol[5][5]={
-                        {0, 0, 0, 0, 0},
-                        {8, 0, 0, 8, 0},
-                        {0, 0, 0, 8, 0},
-                        {0, 0, 0, 8, 0},
-                        {8, 8, 0, 8, 0}};
-        break;
-       case 3:
-           tsol[5][5]={
-                        {0, 8, 0, 8, 8},
-                        {0, 0, 8, 0, 0},
-                        {0, 8, 8, 0, 0},
-                        {0, 0, 0, 0, 0},
-                        {0, 0, 8, 0, 0}};
-        break;
-    }
 
     if(tsol[fila][columna] == 8)
     {
