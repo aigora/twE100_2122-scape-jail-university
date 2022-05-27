@@ -7,7 +7,7 @@ int pruebaFisica(int modo);
 int pruebaMates(int modo);
 int pruebaDibujo(int modo);
 int pruebaBiologia(int modo);
-int pruebaFabricacion(int modo);
+int pruebaRecreo(int modo);
 int mapa(char op);
 
 int main()
